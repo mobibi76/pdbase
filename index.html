@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <title>프로세스디자인 베이스 컨설팅 | Process Design Base Consulting</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./style/style.css">
+
+        <!-- jQuery Google CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <!-- Fetch API polyfill -->
+        <script src="./source/fetch.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="./index.html">프로세스디자인 베이스 컨설팅</a>
+        </h1>
+        <h3>
+            Processdesignbase@gmail.com
+        </h3>
+
+        <!--<input id="toggle" type="button" Value="한글" onclick="location.href='./index.html';">-->
+        <!--<input id="toggle" type="button" Value="ENGLISH" onclick="location.href='./global/EN/indexEN.html';">-->
+        <!--<input id="toggle" type="button" Value="日本語" onclick="location.href='./global/JP/indexJP.html';">-->
+
+        <div id="grid">
+            <div id="nav">
+            </div>
+
+            <div id="content">
+                <div id="container">
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            fetch('Menu').then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('#nav').innerHTML=text;
+                })
+            });
+
+            fetch('Home').then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('#container').innerHTML=text;
+                })
+            });
+
+            function introFetch(pageTitle){
+                fetch(pageTitle).then(function(response){
+                    response.text().then(function(text){
+                        document.querySelector('#container').innerHTML=text;
+                    })
+                });
+            }
+        </script>
+    </body>
+</html>
