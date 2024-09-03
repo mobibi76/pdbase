@@ -56,20 +56,20 @@
             }
 
             // about height issue on #container's scrolling
-            /* document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function() {
                 function adjustContainerHeight() {
                     var headerHeight = document.querySelector('h1').offsetHeight + document.querySelector('h2').offsetHeight;
 
                     if (window.innerHeight <= 1000) {
                         document.querySelector('#container').style.height = `calc(100vh - ${headerHeight}px)`;
                     } else {
-                        document.querySelector('#container').style.height = ``;
+                        document.querySelector('#container').style.height = `100%`;
                     }
                 }
 
                 adjustContainerHeight();
                 window.addEventListener('resize', adjustContainerHeight);
-            }); */
+            });
         </script>
     </body>
 </html>
