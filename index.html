@@ -58,7 +58,12 @@
             document.addEventListener("DOMContentLoaded", function() {
                 function adjustContainerHeight() {
                     var headerHeight = document.querySelector('h1').offsetHeight + document.querySelector('h2').offsetHeight;
-                    document.querySelector('#container').style.height = `calc(100vh - ${headerHeight}px)`;
+
+                    if (window.innerHeight <= 1000) {
+                        document.querySelector('#container').style.height = `calc(100vh - ${headerHeight}px)`;
+                    } else {
+                        Document.querySelector('#container').style.height = `100%`;
+                    }
                 }
 
                 adjustContainerHeight();
