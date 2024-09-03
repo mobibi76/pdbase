@@ -1,44 +1,46 @@
 html, body {
-    margin: 0px;
-    padding: 0px;
+    margin: 2px;
+    padding: 2px;
     overflow: hidden;
-}
+    height: 100%;
+} /*new_24.09.03*/
 
 #grid {
     display: grid;
     grid-template-columns: 220px 1fr;
+    height: 100vh;
 }
 
-#grid #content {
-    flex: 1fr;
+#content {
     display: flex;
     flex-direction: column;
     padding: 25px;
-    width: 900px;
+    overflow: hidden;
 }
 
-#grid #content #container {
+#container {
+    flex: 1fr;
     padding: 0px;
-    display: flex;
+    overflow-y: auto;
+} /*new_24.09.03*/
+
+#nav {
+    margin: 0px;
+    padding: 2px;
+    border-right: 1px lightslategrey solid;
+    background-color: ghostwhite;
     overflow-y: auto;
 }
 
-#grid #nav {
-    margin: 0px;
-    padding: 5px;
-    border-right: 1px lightslategrey solid;
-    background-color: ghostwhite;
-}
-
-#grid #nav a {
+#nav a {
     font-family: sans-serif;
     font-size: 18px;
     color: dimgray;
     text-decoration: none;
 }
 
-#grid #nav li {
-    border-bottom: 1px lightslategray dotted;
+#nav li {
+    border-bottom: 2px lightslategray dotted;
 }
 
 #toggle {
@@ -50,13 +52,9 @@ a {
     text-decoration: none;
 }
 
-body {
-    margin: 10px;
-}
-
-h2 {
+h1 {
     margin: 0px;
-    padding: 2px;
+    padding: 1px;
     font-family: sans-serif;
     font-size: 22px;
     text-align: left;
@@ -64,9 +62,9 @@ h2 {
     background-color: ghostwhite;
 }
 
-h3 {
+h2 {
     margin: 0px;
-    padding: 2px;
+    padding: 1px;
     font-family: sans-serif;
     font-size: 18px;
     color: dimgray;
