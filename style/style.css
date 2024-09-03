@@ -23,7 +23,6 @@ html, body {
     flex-direction: column;
     padding: 1px;
     height: 100%;
-    overflow: hidden;
 }
 
 #container {
@@ -86,6 +85,7 @@ h2 {
     #grid {
         display: block;
         height: auto;
+        overflow: visible;
     }
 
     #content {
