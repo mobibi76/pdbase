@@ -1,6 +1,6 @@
 html, body {
-    margin: 2px;
-    padding: 2px;
+    margin: 0px;
+    padding: 0px;
     overflow: hidden;
     height: 100%;
 }
@@ -14,20 +14,20 @@ html, body {
 #content {
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 1px;
     height: 100%;
     overflow: hidden;
 }
 
 #container {
     flex: 1;
-    padding: 2px;
+    padding: 1px;
     overflow-y: auto;
 }
 
 #nav {
-    margin: 0px;
-    padding: 2px;
+    margin: 1px;
+    padding: 1px;
     border-right: 1px lightslategrey solid;
     background-color: ghostwhite;
     overflow-y: auto;
@@ -35,13 +35,14 @@ html, body {
 
 #nav a {
     font-family: sans-serif;
+    font-weight: bold;
     font-size: 18px;
     color: dimgray;
     text-decoration: none;
 }
 
 #nav li {
-    border-bottom: 2px lightslategray dotted;
+    border-bottom: 1px lightslategray dashed;
 }
 
 #toggle {
@@ -55,23 +56,23 @@ a {
 
 h1 {
     margin: 0px;
-    padding: 1px;
+    padding: 0px;
     font-family: sans-serif;
     font-size: 22px;
     text-align: left;
-    border-bottom: 1px lightslategray solid;
+    border-bottom: 4px lightgray ridge;
     background-color: ghostwhite;
 }
 
 h2 {
     margin: 0px;
-    padding: 1px;
+    padding: 0px;
     font-family: sans-serif;
     font-size: 18px;
-    color: dimgray;
+    color: ghostwhite;
     text-align: left;
-    border-bottom: 1px lightslategrey solid;
-    background-color: ghostwhite;
+    border-bottom: 4px lightgray groove;
+    background-color: rgb(50, 50, 50);
 }
 
 @media(max-width: 1000px) {
@@ -81,7 +82,7 @@ h2 {
     }
     
     #content {
-        padding: 20px;
+        padding: 1px;
         height: calc(100vh-40px);
         overflow: hidden;
     }
@@ -92,9 +93,9 @@ h2 {
     }
     
     #nav {
-        margin: 0px;
-        padding: 10px;
+        margin: 1px;
+        padding: 1px;
         border-right: none;
-        border-bottom: 1px lightslategrey solid;
+        border-bottom: 3px lightslategrey dashed;
     }
 }
