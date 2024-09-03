@@ -30,6 +30,7 @@ html, body {
     flex: 1;
     padding: 1px;
     overflow-y: auto;
+    height: 100%;
 }
 
 #nav {
