@@ -30,7 +30,6 @@ html, body {
     flex: 1;
     padding: 1px;
     overflow-y: auto;
-    max-height: 100%;
 }
 
 #nav {
@@ -87,7 +86,6 @@ h2 {
     #grid {
         display: block;
         height: auto;
-        overflow: hidden;
     }
 
     #content {
@@ -95,7 +93,7 @@ h2 {
     }
   
     #container {
-        height: 100%;
+        min-height: 100vh;
     }
 
     #nav {
@@ -104,6 +102,5 @@ h2 {
         border-right: none;
         border-bottom: 3px var(--primary-color) dashed;
         height: auto;
-        overflow: hidden;
     }
 }
