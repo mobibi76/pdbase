@@ -1,23 +1,38 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
 #grid {
     display: grid;
     grid-template-columns: 220px 1fr;
+    overflow: hidden;
 }
 
 #grid #content {
+    display: flex;
+    flex-direction: column;
     padding: 25px;
     width: 900px;
 }
 
+#grid #content #container {
+    padding: 0px;
+    display: flex;
+    overflow-y: auto;
+}
+
 #grid #nav {
-    border-right: 1px lightslategrey solid;
     margin: 0px;
     padding: 5px;
+    border-right: 1px lightslategrey solid;
     background-color: ghostwhite;
 }
 
 #grid #nav a {
-    font-size: 18px;
     font-family: sans-serif;
+    font-size: 18px;
     color: dimgray;
     text-decoration: none;
 }
@@ -40,23 +55,23 @@ body {
 }
 
 h2 {
-    font-size: 22px;
-    font-family: sans-serif;
-    text-align: left;
-    border-bottom: 1px lightslategray solid;
     margin: 0px;
     padding: 2px;
+    font-family: sans-serif;
+    font-size: 22px;
+    text-align: left;
+    border-bottom: 1px lightslategray solid;
     background-color: ghostwhite;
 }
 
 h3 {
-    font-size: 18px;
+    margin: 0px;
+    padding: 2px;
     font-family: sans-serif;
+    font-size: 18px;
     color: dimgray;
     text-align: left;
     border-bottom: 1px lightslategrey solid;
-    margin: 0px;
-    padding: 2px;
     background-color: ghostwhite;
 }
 
