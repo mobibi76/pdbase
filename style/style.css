@@ -1,14 +1,21 @@
+:root {
+    --primary-color: dimgray;
+    --secondary-color: ghostwhite;
+    --accent-color: lightslategray;
+}
+
 html, body {
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
     height: 100%;
+    overflow: hidden;
 }
 
 #grid {
     display: grid;
     grid-template-columns: 200px 1fr;
     height: 100vh;
+    overflow: hidden;
 }
 
 #content {
@@ -20,29 +27,30 @@ html, body {
 }
 
 #container {
-    height: 100%;
+    flex: 1;
     padding: 1px;
     overflow-y: auto;
+    max-height: 100%;
 }
 
 #nav {
     margin: 1px;
     padding: 1px;
-    border-right: 3px dimgray dashed;
-    background-color: ghostwhite;
-    overflow-y: auto;
+    border-right: 3px var(--primary-color) dashed;
+    background-color: var(--secondary-color);
+    overflow: hidden;
 }
 
 #nav a {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 18px;
-    color: dimgray;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 #nav li {
-    border-bottom: 1px lightslategray solid;
+    border-bottom: 1px var(--accent-color) solid;
 }
 
 #toggle {
@@ -50,7 +58,7 @@ html, body {
 }
 
 a {
-    color: dimgray;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -60,8 +68,8 @@ h1 {
     font-family: sans-serif;
     font-size: 22px;
     text-align: left;
-    border-bottom: 2px dimgray solid;
-    background-color: ghostwhite;
+    border-bottom: 2px var(--primary-color) solid;
+    background-color: var(--secondary-color);
 }
 
 h2 {
@@ -69,33 +77,31 @@ h2 {
     padding: 0px;
     font-family: sans-serif;
     font-size: 18px;
-    color: ghostwhite;
+    color: var(--secondary-color);
     text-align: left;
-    border-bottom: 2px dimgray solid;
-    background-color: dimgray;
+    border-bottom: 2px var(--primary-color) solid;
+    background-color: var(--primary-color);
 }
 
 @media(max-width: 1000px) {
     #grid {
         display: block;
-        height: 100vh;
-    }
-    
-    #content {
-        padding: 1px;
-        height: calc(100vh - 20px);
-        overflow: hidden;
+        height: auto;
     }
 
-    #container {
-        height: 100%;
-        overflow-y: auto;
+    #content {
+        height: auto;
     }
-    
+  
+    #container {
+        height: 100vh;
+    }
+
     #nav {
         margin: 1px;
         padding: 1px;
         border-right: none;
-        border-bottom: 3px dimgray dashed;
+        border-bottom: 3px var(--primary-color) dashed;
+        height: auto;
     }
 }
