@@ -28,7 +28,7 @@ html, body {
 #nav {
     margin: 1px;
     padding: 1px;
-    border-right: 1px lightslategrey solid;
+    border-right: 3px dimgray dashed;
     background-color: ghostwhite;
     overflow-y: auto;
 }
@@ -42,7 +42,7 @@ html, body {
 }
 
 #nav li {
-    border-bottom: 1px lightslategray dashed;
+    border-bottom: 1px lightslategray solid;
 }
 
 #toggle {
@@ -60,7 +60,7 @@ h1 {
     font-family: sans-serif;
     font-size: 22px;
     text-align: left;
-    border-bottom: 4px lightgray ridge;
+    border-bottom: 2px dimgray solid;
     background-color: ghostwhite;
 }
 
@@ -71,8 +71,8 @@ h2 {
     font-size: 18px;
     color: ghostwhite;
     text-align: left;
-    border-bottom: 4px lightgray groove;
-    background-color: rgb(50, 50, 50);
+    border-bottom: 2px dimgray solid;
+    background-color: dimgray;
 }
 
 @media(max-width: 1000px) {
@@ -83,7 +83,7 @@ h2 {
     
     #content {
         padding: 1px;
-        height: calc(100vh-40px);
+        height: 100vh;
         overflow: hidden;
     }
 
@@ -96,6 +96,6 @@ h2 {
         margin: 1px;
         padding: 1px;
         border-right: none;
-        border-bottom: 3px lightslategrey dashed;
+        border-bottom: 3px dimgray dashed;
     }
 }
