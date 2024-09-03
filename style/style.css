@@ -14,21 +14,19 @@ html, body {
 #grid {
     display: grid;
     grid-template-columns: 200px 1fr;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 
 #content {
     display: flex;
     flex-direction: column;
-    padding: 1px;
     height: 100%;
     overflow: hidden;
 }
 
 #container {
     flex: 1;
-    padding: 1px;
     overflow-y: auto;
     height: 100%;
 }
