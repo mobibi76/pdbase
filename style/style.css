@@ -87,6 +87,7 @@ h2 {
     #grid {
         display: block;
         height: auto;
+        overflow: hidden;
     }
 
     #content {
@@ -103,5 +104,6 @@ h2 {
         border-right: none;
         border-bottom: 3px var(--primary-color) dashed;
         height: auto;
+        overflow: hidden;
     }
 }
