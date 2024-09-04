@@ -1465,3 +1465,16 @@
 </g>
 
 </svg>
+
+<!--every a tag linked to new window-->
+<script type="text/javascript">
+    <![CDATA[
+    window.addEventListener('load', function() {
+        var links = document.querySelectorAll('a');
+        links.forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    });
+    ]]>
+</script>
+<!--every a tag linked to new window-->
