@@ -35,18 +35,17 @@
         </div>
 
         <script>
+            // load pages with fetch polyfill
             fetch('Menu').then(function(response){
                 response.text().then(function(text){
                     document.querySelector('#nav').innerHTML=text;
                 })
             });
-
             fetch('Home').then(function(response){
                 response.text().then(function(text){
                     document.querySelector('#container').innerHTML=text;
                 })
             });
-
             function introFetch(pageTitle){
                 fetch(pageTitle).then(function(response){
                     response.text().then(function(text){
@@ -66,7 +65,12 @@
 
             adjustContainerHeight();
             window.addEventListener('resize', adjustContainerHeight);
-        });
+            });
+
+            // prevent contents from the mouse right-click
+            document.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+            })
         </script>
     </body>
 </html>
