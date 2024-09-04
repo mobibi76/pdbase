@@ -2,6 +2,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:lang="en-us" width="1900" height="1500" viewBox="0 0 1900 1500">
 <title>The Cognitive Bias Codex</title>
 
+<!--every a tag linked to new window-->
+<script type="text/javascript">
+    <![CDATA[
+    window.addEventListener('load', function() {
+        var links = document.querySelectorAll('a');
+        links.forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    });
+    ]]>
+</script>
+<!--every a tag linked to new window-->
+
 <style type="text/css">
 	text { font-family: "DejaVu Sans", sans-serif; }
 	text a:hover { fill:   blue; text-decoration: underline; }
@@ -1465,16 +1478,3 @@
 </g>
 
 </svg>
-
-<!--every a tag linked to new window-->
-<script type="text/javascript">
-    <![CDATA[
-    window.addEventListener('load', function() {
-        var links = document.querySelectorAll('a');
-        links.forEach(function(link) {
-            link.setAttribute('target', '_blank');
-        });
-    });
-    ]]>
-</script>
-<!--every a tag linked to new window-->
