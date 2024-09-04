@@ -78,11 +78,15 @@ h2 {
     }
 
     #nav {
+        flex-direction: row;
         border-right: none;
+        white-space: nowrap;
         border-bottom: 0.4rem var(--primary-color) dashed;
     }
 
     #nav li {
+        display: inline-block;
         border-bottom: none;
+        margin-right: 5px;
     }
 }
