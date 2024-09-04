@@ -38,12 +38,14 @@
             fetch('Home').then(function(response){
                 response.text().then(function(text){
                     document.querySelector('#container').innerHTML=text;
+                    document.querySelector('#container').scrollTop=0;
                 })
             });
             function introFetch(pageTitle){
                 fetch(pageTitle).then(function(response){
                     response.text().then(function(text){
                         document.querySelector('#container').innerHTML=text;
+                        document.querySelector('#container').scrollTop=0;
                     })
                 });
             }
