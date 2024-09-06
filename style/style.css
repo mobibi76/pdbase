@@ -6,7 +6,7 @@
 }
 
 @font-face {
-    font-family: Freesentation;
+    font-family: 'freesentation';
     src: url('./font/Freesentation-8ExtraBold.ttf') format('truetype');
 }
 
@@ -40,9 +40,8 @@ html, body {
 }
 
 #nav a {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 22px;
+    font-family:'freesentation';
+    font-size: 28px;
     color: var(--primary-color);
     text-decoration: none;
 }
@@ -59,8 +58,8 @@ a {
 
 h1 {
     margin: 0px;
-    font-family: serif;
-    font-size: 18px;
+    font-family: 'freesentation';
+    font-size: 20px;
     color: var(--primary-color);
     text-align: left;
     border-bottom: 0.8rem var(--primary-color) solid;
@@ -70,8 +69,8 @@ h1 {
 
 h2 {
     margin: 0px;
-    font-family: sans-serif;
-    font-size: 22px;
+    font-family: 'freesentation';
+    font-size: 28px;
     color: var(--secondary-color);
     text-align: left;
     border-bottom: 0.8rem var(--primary-color) solid;
