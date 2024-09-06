@@ -6,8 +6,13 @@
 }
 
 @font-face {
-    font-family: 'freesentation';
-    src: url('./font/Freesentation-8ExtraBold.ttf') format('truetype');
+    font-family: 'freesentation8';
+    src: url('font/Freesentation-8ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'freesentation6';
+    src: url('font/Freesentation-6SemiBold.ttf') format('truetype');
 }
 
 html, body {
@@ -40,7 +45,7 @@ html, body {
 }
 
 #nav a {
-    font-family:'freesentation';
+    font-family:'freesentation8';
     font-size: 28px;
     color: var(--primary-color);
     text-decoration: none;
@@ -58,7 +63,7 @@ a {
 
 h1 {
     margin: 0px;
-    font-family: 'freesentation';
+    font-family: 'freesentation6';
     font-size: 20px;
     color: var(--primary-color);
     text-align: left;
@@ -69,7 +74,7 @@ h1 {
 
 h2 {
     margin: 0px;
-    font-family: 'freesentation';
+    font-family: 'freesentation8';
     font-size: 28px;
     color: var(--secondary-color);
     text-align: left;
