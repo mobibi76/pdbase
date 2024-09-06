@@ -5,6 +5,11 @@
     --default-color: white;
 }
 
+@font-face {
+    font-family: Freesentation;
+    src: url('./font/Freesentation-8ExtraBold.ttf') format('truetype');
+}
+
 html, body {
     margin: 0px;
     overflow: hidden;
