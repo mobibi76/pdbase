@@ -34,7 +34,7 @@
         </div>
 
         <script>
-            /*--fetch API-------------------------*/
+            /*--fetch API-------------------------
             // function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
@@ -51,11 +51,11 @@
                     }).catch(error => {
                         console.error('There has been a problem with the fetch operation:', error);
                     });
-                }
+                }*/
 
             // function: load pages through fetch API with ERROR handle
-                function fetchPageContent(url, targetElementSelector) {
-                    fetch(url).then(response => {
+                function fetchPageContent(pageTitle, targetElementSelector) {
+                    fetch(pageTitle).then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not OK.');
                         }
