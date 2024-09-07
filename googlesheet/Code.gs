@@ -1,5 +1,14 @@
-/*구글 스프레드시트 App Script 확장 활용*/
-// HTML 문서를 열어주는 함수
+/*Google Spread-Sheet Extention App Script Use*/
+
+// setup the spresdsheet
+function setupSheet() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check'); // 시트 이름 변경 필요
+
+// setup label
+  var headers = ['기록시간', '이름', '이메일', '성별', '분야/업무', '희망 내용', '희망 지역', '희망 날짜', '희망 서비스', '제안 의견', '참고 사항'];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+
+// oepn html file
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
     .setTitle('pdbops.com 컨설팅 의뢰서')
@@ -7,33 +16,45 @@ function doGet() {
     .setHeight(600);
 }
 
-// 폼 데이터를 구글 시트에 저장하는 함수
+// save form-data to Google spread-sheet
 function submitFormData(formData) {
-  // 폼 데이터가 없는 경우 처리
+  // check form-data
   if (!formData) {
-    return '폼 데이터가 정의되지 않았습니다.';
+    return 'There was no formData.';
   }
 
-  // 스프레드시트와 시트를 가져오기
+  // check spread-sheet
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
   if (!sheet) {
-    return '스프레드시트를 찾을 수 없습니다.';
+    return 'There was no spreadsheet.';
   }
 
-  // 시트에 데이터 추가
+// Korean local time for records
+const timeZone = 'Asia/Seoul';
+const now = new Date();
+const koreanTime = Utilities.formDate(now, timeZone, 'yyyy-MM-dd HH:mm:ss');
+
+
+// Korean local time (UTC+9) applied for dateService
+function toKST(dateStr) {
+    const date = new Date(dateStr + 'T00:00:00+09:00');
+    return date.toISOString().split('T')[0]; // Return Date Only
+}
+
+  // add data to the spread-sheet
   sheet.appendRow([
+    koreanTime || '',
     formData.name || '',
     formData.email || '',
     formData.gender || '',
     formData.fieldWork || '',
     formData.hopeService || '',
     formData.areaService || '',
-    formData.dateService || '',
+    toKST(formData.dateService) || '',
     formData.selectService ? formData.selectService.join(", ") : '',
     formData.moreService || '',
     formData.remarks ? formData.remarks.join(", ") : ''
   ]);
-  
-  // 성공 메시지 반환
-  return '감사합니다. 확인 후 연락드리겠습니다.';
+
+return '감사합니다. 확인 후 연락드리겠습니다.';
 }
