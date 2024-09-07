@@ -78,7 +78,7 @@
                         }
                         return response.text();
                     }).then(text => {
-                        const containerElement = document.querySelector('#container');
+                        const targetElement = document.querySelector('#container');
                         if (targetElement) {
                             targetElement.innerHTML = text;
                             targetElement.scrollTop = 0;
