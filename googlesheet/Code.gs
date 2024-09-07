@@ -2,7 +2,7 @@
 
 // open HTML document
 function doGet() {
-  return HtmlService.createHtmlOutputFromFile('pdbopsapp')
+  return HtmlService.createHtmlOutputFromFile('pdbopsapply')
     .setTitle('컨설팅 서비스 신청')
     .setWidth(600)
     .setHeight(400);
@@ -10,7 +10,7 @@ function doGet() {
 
 // save the input data into the google spreadsheet
 function submitFormData(formData) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('컨설팅 서비스 신청 응답');
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
   sheet.appendRow([
     formData.name,
     formData.email,
