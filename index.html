@@ -87,9 +87,15 @@
                         headerHeight += header.getBoundingClientRect().height;
                     });
 
-                    const gridHeight = window.innerHeight - headerHeight;
-                    document.querySelector('#grid').style.height = `${gridHeight}px`;
-                    document.querySelector('#content').style.height = `${gridHeight}px`;
+                    const grid = document.querySelector('#grid');
+                    if (window.innerWidth <=1000) {
+                        grid.style.height = 'auto';
+                        document.querySelector('#content').style.height = 'auto';
+                    } else {
+                        const gridHeight = window.innerHeight - headerHeight;
+                        grid.style.height = `${gridHeight}px`;
+                        document.querySelector('#content').style.height = `${gridHeight}px`;
+                    }
                 }
 
                 adjustContainerHeight();
