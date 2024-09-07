@@ -1,137 +1,137 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <base target="_self">
-    <script>
-        function submitForm() {
-            const formData = {
-                name: document.querySelector('input[name="name"]').value,
-                email: document.querySelector('input[name="email"]').value,
-                gender: document.querySelector('input[name="gender"]:checked')?.value,
-                field_work: document.querySelector('input[name="field_work"]').value,
-                hope_service: document.querySelector('textarea[name="hope_service"]').value,
-                area_service: document.querySelector('input[name="area_service"]').value,
-                date_service: document.querySelector('input[name="date_service"]').value,
-                select_service: Array.from(document.querySelectorAll('input[name="select_service"]:checked')).map(el => el.value),
-                more_service: document.querySelector('textarea[name="more_service"]').value,
-                remarks: Array.from(document.querySelectorAll('input[name="remarks"]:checked')).map(el => el.value)
-            };
+    <head>
+        <base target="_self">
+        <script>
+            function submitForm() {
+                const formData = {
+                    name: document.querySelector('input[name="name"]').value,
+                    email: document.querySelector('input[name="email"]').value,
+                    gender: document.querySelector('input[name="gender"]:checked')?.value,
+                    field_work: document.querySelector('input[name="field_work"]').value,
+                    hope_service: document.querySelector('textarea[name="hope_service"]').value,
+                    area_service: document.querySelector('input[name="area_service"]').value,
+                    date_service: document.querySelector('input[name="date_service"]').value,
+                    select_service: Array.from(document.querySelectorAll('input[name="select_service"]:checked')).map(el => el.value),
+                    more_service: document.querySelector('textarea[name="more_service"]').value,
+                    remarks: Array.from(document.querySelectorAll('input[name="remarks"]:checked')).map(el => el.value)
+                };
 
-            google.script.run.withSuccessHandler(function(response) {
-                document.getElementById('response').innerHTML = response;
-            }).submitFormData(formData);
+                google.script.run.withSuccessHandler(function(response) {
+                    document.getElementById('response').innerHTML = response;
+                }).submitFormData(formData);
 
-            return false;
-        }
-    </script>
-</head>
-<body>
-    <h1>컨설팅 서비스 신청</h1>
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>컨설팅 서비스 신청</h1>
 
-    <form onsubmit="return submitForm();">
-        <label for="name">1.이름*</label>
-        <input type="text" name="name" required>
-        <br><br>
+        <form onsubmit="return submitForm();">
+            <label for="name">1.이름*</label>
+            <input type="text" name="name" required>
+            <br><br>
 
-        <label for="email">2.이메일*</label>
-        <input type="email" name="email" required>
-        <br><br>
+            <label for="email">2.이메일*</label>
+            <input type="email" name="email" required>
+            <br><br>
 
-        <p>3.성별*</p>
-        <label for="male">남성</label>
-        <input type="radio" id="male" name="gender" value="male" required>
-        <br>
-        <label for="female">여성</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <br><br>
+            <p>3.성별*</p>
+            <label for="male">남성</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <br>
+            <label for="female">여성</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <br><br>
 
-        <label for="field_work">4.분야/업무*</label>
-        <input type="text" name="field_work" required>
-        <br><br>
+            <label for="field_work">4.분야/업무*</label>
+            <input type="text" name="field_work" required>
+            <br><br>
 
-        <label for="hope_service">5.희망 내용*</label>
-        <textarea name="hope_service" rows="4" cols="50" required></textarea>
-        <br><br>
+            <label for="hope_service">5.희망 내용*</label>
+            <textarea name="hope_service" rows="4" cols="50" required></textarea>
+            <br><br>
 
-        <label for="area_service">6.희망 지역*</label>
-        <input type="text" name="area_service" required>
-        <br><br>
+            <label for="area_service">6.희망 지역*</label>
+            <input type="text" name="area_service" required>
+            <br><br>
 
-        <label for="date_service">7.희망 날짜*</label>
-        <input type="date" name="date_service" required>
-        <br><br>
+            <label for="date_service">7.희망 날짜*</label>
+            <input type="date" name="date_service" required>
+            <br><br>
 
-        <p>8.희망 서비스(다중 선택 가능)</p>
-        <label for="risk">교육/워크숍_리스크 애자일 프로세스 디자인</label>
-        <input type="checkbox" id="risk" name="select_service" value="risk">
-        <br>
-        <label for="knowledge">교육/워크숍_지식 네트워크 디자인</label>
-        <input type="checkbox" id="knowledge" name="select_service" value="knowledge">
-        <br>
-        <label for="strategy">전략_전략 컨설팅(애자일 코칭)</label>
-        <input type="checkbox" id="strategy" name="select_service" value="strategy">
-        <br>
-        <label for="subsidy">전략_정부(기술)지원사업 멘토링</label>
-        <input type="checkbox" id="subsidy" name="select_service" value="subsidy">
-        <br>
-        <label for="productise">전략_기술 코칭</label>
-        <input type="checkbox" id="productise" name="select_service" value="productise">
-        <br>
-        <label for="commercialise">전략_기술 사업화 멘토링</label>
-        <input type="checkbox" id="commercialise" name="select_service" value="commercialise">
-        <br>
-        <label for="security">특화 교육/컨설팅_정보보호 관리체계 수립</label>
-        <input type="checkbox" id="security" name="select_service" value="security">
-        <br>
-        <label for="system">특화 교육/컨설팅_서비스 시스템 디자인 코칭</label>
-        <input type="checkbox" id="system" name="select_service" value="system">
-        <br>
-        <label for="agile">특화 교육/컨설팅_애자일 프로세스 코칭</label>
-        <input type="checkbox" id="agile" name="select_service" value="agile">
-        <br>
-        <label for="more">기타 제안</label>
-        <input type="checkbox" id="more" name="select_service" value="more">
-        <br><br>
+            <p>8.희망 서비스(다중 선택 가능)</p>
+            <label for="risk">교육/워크숍_리스크 애자일 프로세스 디자인</label>
+            <input type="checkbox" id="risk" name="select_service" value="risk">
+            <br>
+            <label for="knowledge">교육/워크숍_지식 네트워크 디자인</label>
+            <input type="checkbox" id="knowledge" name="select_service" value="knowledge">
+            <br>
+            <label for="strategy">전략_전략 컨설팅(애자일 코칭)</label>
+            <input type="checkbox" id="strategy" name="select_service" value="strategy">
+            <br>
+            <label for="subsidy">전략_정부(기술)지원사업 멘토링</label>
+            <input type="checkbox" id="subsidy" name="select_service" value="subsidy">
+            <br>
+            <label for="productise">전략_기술 코칭</label>
+            <input type="checkbox" id="productise" name="select_service" value="productise">
+            <br>
+            <label for="commercialise">전략_기술 사업화 멘토링</label>
+            <input type="checkbox" id="commercialise" name="select_service" value="commercialise">
+            <br>
+            <label for="security">특화 교육/컨설팅_정보보호 관리체계 수립</label>
+            <input type="checkbox" id="security" name="select_service" value="security">
+            <br>
+            <label for="system">특화 교육/컨설팅_서비스 시스템 디자인 코칭</label>
+            <input type="checkbox" id="system" name="select_service" value="system">
+            <br>
+            <label for="agile">특화 교육/컨설팅_애자일 프로세스 코칭</label>
+            <input type="checkbox" id="agile" name="select_service" value="agile">
+            <br>
+            <label for="more">기타 제안</label>
+            <input type="checkbox" id="more" name="select_service" value="more">
+            <br><br>
 
-        <label for="more_service">9.(위 8)의 제안 의견</label>
-        <textarea name="more_service" rows="4" cols="50"></textarea>
-        <br><br>
+            <label for="more_service">9.(위 8)의 제안 의견</label>
+            <textarea name="more_service" rows="4" cols="50"></textarea>
+            <br><br>
 
-        <p>10.참고 사항(다중 선택 가능)</p>
-        <label for="pre_startup">예비 창업</label>
-        <input type="checkbox" id="pre_startup" name="remarks" value="pre_startup">
-        <br>
-        <label for="early_startup">초기 스타트업(3년 이내)</label>
-        <input type="checkbox" id="early_startup" name="remarks" value="early_startup">
-        <br>
-        <label for="startup">스타트업(4년~7년)</label>
-        <input type="checkbox" id="startup" name="remarks" value="startup">
-        <br>
-        <label for="small_biz">중소기업</label>
-        <input type="checkbox" id="small_biz" name="remarks" value="small_biz">
-        <br>
-        <label for="midium_biz">중견기업</label>
-        <input type="checkbox" id="midium_biz" name="remarks" value="midium_biz">
-        <br>
-        <label for="large_company">대기업</label>
-        <input type="checkbox" id="large_company" name="remarks" value="large_company">
-        <br>
-        <label for="public_institution">공공기관/연구원</label>
-        <input type="checkbox" id="public_institution" name="remarks" value="public_institution">
-        <br>
-        <label for="university">대학</label>
-        <input type="checkbox" id="university" name="remarks" value="university">
-        <br>
-        <label for="student">학생(대학원 포함)</label>
-        <input type="checkbox" id="student" name="remarks" value="student">
-        <br>
-        <label for="general">일반(직장인 포함)</label>
-        <input type="checkbox" id="general" name="remarks" value="general">
-        <br><br>
+            <p>10.참고 사항(다중 선택 가능)</p>
+            <label for="pre_startup">예비 창업</label>
+            <input type="checkbox" id="pre_startup" name="remarks" value="pre_startup">
+            <br>
+            <label for="early_startup">초기 스타트업(3년 이내)</label>
+            <input type="checkbox" id="early_startup" name="remarks" value="early_startup">
+            <br>
+            <label for="startup">스타트업(4년~7년)</label>
+            <input type="checkbox" id="startup" name="remarks" value="startup">
+            <br>
+            <label for="small_biz">중소기업</label>
+            <input type="checkbox" id="small_biz" name="remarks" value="small_biz">
+            <br>
+            <label for="midium_biz">중견기업</label>
+            <input type="checkbox" id="midium_biz" name="remarks" value="midium_biz">
+            <br>
+            <label for="large_company">대기업</label>
+            <input type="checkbox" id="large_company" name="remarks" value="large_company">
+            <br>
+            <label for="public_institution">공공기관/연구원</label>
+            <input type="checkbox" id="public_institution" name="remarks" value="public_institution">
+            <br>
+            <label for="university">대학</label>
+            <input type="checkbox" id="university" name="remarks" value="university">
+            <br>
+            <label for="student">학생(대학원 포함)</label>
+            <input type="checkbox" id="student" name="remarks" value="student">
+            <br>
+            <label for="general">일반(직장인 포함)</label>
+            <input type="checkbox" id="general" name="remarks" value="general">
+            <br><br>
 
-        <input type="submit" value="제출">
-    </form>
+            <input type="submit" value="제출">
+        </form>
 
-    <div id="response"></div>
-</body>
+        <div id="response"></div>
+    </body>
 </html>
