@@ -35,6 +35,25 @@
         </div>
 
         <script>
+            /*fetch API polyfill--------*/
+            // Define introFetch function
+                function introFetch(pageTitle) {
+                    fetch(pageTitle).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not OK.');
+                        }
+                        return response.text();
+                    }).then(text => {
+                        const containerElement = document.querySelector('#container');
+                        if (containerElement) {
+                            containerElement.innerHTML = text;
+                            containerElement.scrollTop = 0;
+                        }
+                    }).catch(error => {
+                        console.error('There has been a problem with the fetch operation:', error);
+                    });
+                }
+
             // function: loading pages through fetch API polyfill with ERROR handling
                 function fetchPageContent(url, targetElementSelector) {
                     fetch(url).then(response => {
@@ -58,6 +77,7 @@
                 fetchPageContent('Menu', '#nav');
                 fetchPageContent('Home', '#container');
 
+            /*------------------------------------------*/
             // calculating all height for scrolling issue
                 function adjustContainerHeight() {
                     const headers = document.querySelectorAll('h1, h2');
@@ -76,6 +96,7 @@
                 window.addEventListener('resize', adjustContainerHeight);
             });
 
+            /*-------------------------------------------------*/
             // prevent contents from the mouse right-click event
             document.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
