@@ -1,11 +1,10 @@
-/* google App Script */
-
+/*google spreadsheet app script*/
 // open HTML document
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
-    .setTitle('컨설팅 서비스 신청')
-    .setWidth(600)
-    .setHeight(400);
+    .setTitle('pdbops.com 컨설팅 의뢰서')
+    .setWidth(100%)
+    .setHeight(100%);
 }
 
 // save the input data into the google spreadsheet
