@@ -13,8 +13,8 @@ function setupSheet() {
 function doGet() {
     return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
         .setTitle('pdbops.com 컨설팅 의뢰서')
-        .setWidth(600)
-        .setHeight(600);
+        .setWidth(1000)
+        .setHeight(1000);
 }
 
 // save form-data to the Google spread-sheet
