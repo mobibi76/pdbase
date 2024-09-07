@@ -13,10 +13,10 @@
 
         <link rel="stylesheet" href="./style/style.css">
 
-        <!-- use: jQuery Google CDN -->
+        <!--use: jQuery Google CDN-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <!-- use: fetch API -->
+        <!--use: fetch API-->
         <script src="./source/fetch.js"></script>
     </head>
 
@@ -34,8 +34,8 @@
         </div>
 
         <script>
-            /*--fetch API-------------------------*/
-            // function: define introFetch function
+            /*--fetch API control--*/
+                // function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -53,7 +53,7 @@
                     });
                 }
 
-            // function: load pages through fetch API with ERROR handle
+                // function: load pages through fetch API with ERROR handle
                 function fetchPageContent(pageTitle, targetElementSelector) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -71,13 +71,14 @@
                     });
                 }
 
-            // Load contents on pages
+            /*--DOMContentLoaded--*/
             document.addEventListener("DOMContentLoaded", function() {
+                // Load initial contents on pages
                 fetchPageContent('Menu', '#nav');
                 fetchPageContent('Home', '#container');
 
-            /*--------------------------------------*/
-            // calculate all heights for scroll issue
+
+                // calculate all heights for scroll issue
                 function adjustContainerHeight() {
                     const headers = document.querySelectorAll('h1, h2');
                     let headerHeight = 0;
@@ -95,8 +96,7 @@
                 window.addEventListener('resize', adjustContainerHeight);
             });
 
-            /*-------------------------------------------------*/
-            // prevent contents from the mouse right-click event
+            /*--prevent contents from the mouse right-click event--*/
             document.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
             });
