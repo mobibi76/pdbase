@@ -71,10 +71,16 @@
                     });
                 }
 
+                function introFetch() {
+                    fetchPageContent('Menu', '#nav');
+                    fetchPageContent('Home', '#container');
+                }
+
             // Load contents on pages
             document.addEventListener("DOMContentLoaded", function() {
-                fetchPageContent('Menu', '#nav');
-                fetchPageContent('Home', '#container');
+                introFetch();
+                //fetchPageContent('Menu', '#nav');
+                //fetchPageContent('Home', '#container');
 
             /*--------------------------------------*/
             // calculate all heights for scroll issue
