@@ -36,7 +36,7 @@
 
         <script>
             /*fetch API polyfill--------*/
-            // Define introFetch function
+            /*// function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -70,12 +70,28 @@
                     }).catch(error => {
                         console.error('There has been a problem with the fetch operation:', error);
                     });
+                }*/
+                function introFetch(pageTitle, targetElementSelector) {
+                    fetch(pageTitle).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not OK.');
+                        }
+                        return response.text();
+                    }).then(text => {
+                        const containerElement = document.querySelector('#container');
+                        if (targetElement) {
+                            targetElement.innerHTML = text;
+                            targetElement.scrollTop = 0;
+                        }
+                    }).catch(error => {
+                        console.error('There has been a problem with the fetch operation:', error);
+                    });
                 }
 
             // Loading contents on page load
             document.addEventListener("DOMContentLoaded", function() {
-                fetchPageContent('Menu', '#nav');
-                fetchPageContent('Home', '#container');
+                introFetch('Menu', '#nav');
+                introFetch('Home', '#container');
 
             /*------------------------------------------*/
             // calculating all height for scrolling issue
