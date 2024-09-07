@@ -35,7 +35,7 @@
 
         <script>
             /*--fetch API-------------------------*/
-            /*// function: define introFetch function
+            // function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -51,7 +51,7 @@
                     }).catch(error => {
                         console.error('There has been a problem with the fetch operation:', error);
                     });
-                }*/
+                }
 
             // function: load pages through fetch API with ERROR handle
                 function fetchPageContent(url, targetElementSelector) {
@@ -71,16 +71,10 @@
                     });
                 }
 
-                function introFetch() {
-                    fetchPageContent('Menu', '#nav');
-                    fetchPageContent('Home', '#container');
-                }
-
             // Load contents on pages
             document.addEventListener("DOMContentLoaded", function() {
-                introFetch(); //add_24.09.07
-                //fetchPageContent('Menu', '#nav');
-                //fetchPageContent('Home', '#container');
+                fetchPageContent('Menu', '#nav');
+                fetchPageContent('Home', '#container');
 
             /*--------------------------------------*/
             // calculate all heights for scroll issue
