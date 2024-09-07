@@ -2,7 +2,7 @@
 
 // setup the spresdsheet
 function setupSheet() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check'); // 시트 이름 변경 필요
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
 
 // setup label
   var headers = ['기록시간', '이름', '이메일', '성별', '분야/업무', '희망 내용', '희망 지역', '희망 날짜', '희망 서비스', '제안 의견', '참고 사항'];
