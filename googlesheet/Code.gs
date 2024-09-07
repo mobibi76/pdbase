@@ -1,15 +1,15 @@
-/*Google Spread-Sheet Extention App Script Use*/
+/*Google Spread-Sheet Extention App-Script Use*/
 
-// setup the spresdsheet
+// setup Google spresdsheet
 function setupSheet() {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
 
-    // setup label
-    var headers = ['기록시간', '이름', '이메일', '성별', '분야/업무', '희망 내용', '희망 지역', '희망 날짜', '희망 서비스', '제안 의견', '참고 사항'];
+    // setup the label
+    var headers = ['Application', 'Name', 'Email', 'Gender', 'Field/Work', 'Request', 'Area', 'Date', 'Services', 'Opinion', 'Remarks'];
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 }
 
-// oepn html file
+// oepn the html file
 function doGet() {
     return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
         .setTitle('pdbops.com 컨설팅 의뢰서')
@@ -17,14 +17,14 @@ function doGet() {
         .setHeight(600);
 }
 
-// save form-data to Google spread-sheet
+// save form-data to the Google spread-sheet
 function submitFormData(formData) {
-    // check form-data
+    // check the form-data
     if (!formData) {
         return 'There was no formData.';
     }
 
-    // check spread-sheet
+    // check the spread-sheet
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
     if (!sheet) {
         return 'There was no spreadsheet.';
@@ -35,7 +35,7 @@ function submitFormData(formData) {
     const now = new Date();
     const koreanTime = Utilities.formatDate(now, timeZone, 'yyyy-MM-dd HH:mm:ss');
 
-    // add data to the spread-sheet
+    // add data(html) to the spread-sheet
     sheet.appendRow([
         koreanTime || '',
         formData.name || '',
