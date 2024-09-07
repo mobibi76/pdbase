@@ -38,29 +38,6 @@
         </div>
 
         <script>
-            /*
-            // load pages with fetch polyfill
-            fetch('Menu').then(function(response){
-                response.text().then(function(text){
-                    document.querySelector('#nav').innerHTML=text;
-                })
-            });
-            fetch('Home').then(function(response){
-                response.text().then(function(text){
-                    document.querySelector('#container').innerHTML=text;
-                    document.querySelector('#container').scrollTop=0;
-                })
-            });
-            function introFetch(pageTitle){
-                fetch(pageTitle).then(function(response){
-                    response.text().then(function(text){
-                        document.querySelector('#container').innerHTML=text;
-                        document.querySelector('#container').scrollTop=0;
-                    })
-                });
-            }
-            */
-
             // load pages with fetch polyfill with ERROR handling
                     fetch('Menu').then(response => {
                         if (!response.ok) {
@@ -112,12 +89,10 @@
                     const headers = document.querySelectorAll('h1, h2'); //h1 and h2 (all header factors)
                     let headerHeight = 0;
 
-                    // summurise each header's height
                     headers.forEach(header => {
                         headerHeight += header.getBoundingClientRect().height;
                     });
 
-                    // summurise the remains' height
                     const gridHeight = window.innerHeight - headerHeight;
                     document.querySelector('#grid').style.height = `${gridHeight}px`;
                     document.querySelector('#content').style.height = `${gridHeight}px`;
