@@ -10,7 +10,7 @@ function doGet() {
 
 // save the input data into the google spreadsheet
 function submitFormData(formData) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('컨설팅 서비스 신청(응답)');
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('컨설팅 서비스 신청 응답');
   sheet.appendRow([
     formData.name,
     formData.email,
