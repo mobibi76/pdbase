@@ -7,7 +7,7 @@
                 const formData = {
                     name: document.querySelector('input[name="name"]').value,
                     email: document.querySelector('input[name="email"]').value,
-                    gender: document.querySelector('input[name="gender"]:checked').value,
+                    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
                     field_work: document.querySelector('input[name="field_work"]').value,
                     hope_service: document.querySelector('textarea[name="hope_service"]').value,
                     area_service: document.querySelector('input[name="area_service"]').value,
@@ -16,6 +16,8 @@
                     more_service: document.querySelector('textarea[name="more_service"]').value,
                     remarks: Array.from(document.querySelectorAll('input[name="remarks"]:checked')).map(el => el.value)
                 };
+
+                console.log(formData);
 
                 google.script.run.withSuccessHandler(function(response) {
                     document.getElementById('response').innerHTML = response;
