@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="ko">
+
     <head>
         <title>프로세스 디자인 기반 컨설팅 서비스 | 리스크 애자일 프로세스 디자인</title>
         
-        <!--meta for SEO, mobile ops. and encoding-->
+        <!--meta: SEO, mobile ops. and encoding-->
         <meta name="description"
         content="고객의 경험과 지식을 디자인하여 문제를 해결하는 프로세스 디자인 기반 컨설팅 서비스 :
         리스크 애자일, 지식 네트워크, 전략, 제품화, 사업화, 정보보호, 시스템 디자인, 애자일 프로세스">
@@ -12,21 +13,19 @@
 
         <link rel="stylesheet" href="./style/style.css">
 
-        <!-- jQuery: Google CDN -->
+        <!-- use: jQuery Google CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <!-- fetch API polyfill -->
+        <!-- use: fetch API -->
         <script src="./source/fetch.js"></script>
     </head>
+
     <body>
         <header>
-            <h1>
-                pdbops.com {Process Design-Based Ops.}
-            </h1>
-            <h2>
-                <a href="./index.html">프로세스디자인베이스 컨설팅 연구소</a>
-            </h2>
+            <h1>pdbops.com {Process Design-Based Ops.}</h1>
+            <h2><a href="./index.html">프로세스디자인베이스 컨설팅 연구소</a></h2>
         </header>
+
         <div id="grid">
             <nav id="nav"></nav>
             <main id="content">
@@ -35,8 +34,8 @@
         </div>
 
         <script>
-            /*fetch API polyfill--------*/
-            /*// function: define introFetch function
+            /*--fetch API-------------------------*/
+            // function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -54,7 +53,7 @@
                     });
                 }
 
-            // function: loading pages through fetch API polyfill with ERROR handling
+            // function: load pages through fetch API with ERROR handle
                 function fetchPageContent(url, targetElementSelector) {
                     fetch(url).then(response => {
                         if (!response.ok) {
@@ -70,31 +69,15 @@
                     }).catch(error => {
                         console.error('There has been a problem with the fetch operation:', error);
                     });
-                }*/
-                function introFetch(pageTitle, targetElementSelector) {
-                    fetch(pageTitle).then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not OK.');
-                        }
-                        return response.text();
-                    }).then(text => {
-                        const targetElement = document.querySelector('#container');
-                        if (targetElement) {
-                            targetElement.innerHTML = text;
-                            targetElement.scrollTop = 0;
-                        }
-                    }).catch(error => {
-                        console.error('There has been a problem with the fetch operation:', error);
-                    });
                 }
 
-            // Loading contents on page load
+            // Load contents on pages
             document.addEventListener("DOMContentLoaded", function() {
                 introFetch('Menu', '#nav');
                 introFetch('Home', '#container');
 
-            /*------------------------------------------*/
-            // calculating all height for scrolling issue
+            /*--------------------------------------*/
+            // calculale all heights for scroll issue
                 function adjustContainerHeight() {
                     const headers = document.querySelectorAll('h1, h2');
                     let headerHeight = 0;
