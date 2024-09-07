@@ -3,90 +3,64 @@
     <head>
         <title>프로세스 디자인 기반 컨설팅 서비스 | 리스크 애자일 프로세스 디자인</title>
         
-        <!--meta for SEO-->
+        <!--meta for SEO, mobile ops. and encoding-->
         <meta name="description"
         content="고객의 경험과 지식을 디자인하여 문제를 해결하는 프로세스 디자인 기반 컨설팅 서비스 :
         리스크 애자일, 지식 네트워크, 전략, 제품화, 사업화, 정보보호, 시스템 디자인, 애자일 프로세스">
-        <!--meta for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--meta for encoding-->
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="./style/style.css">
 
-        <!-- jQuery Google CDN -->
+        <!-- jQuery: Google CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <!-- Fetch API polyfill -->
+        <!-- fetch API polyfill -->
         <script src="./source/fetch.js"></script>
     </head>
     <body>
-        <h1>
-            pdbops.com {Process Design-Based Ops.}
-        </h1>
-        <h2>
-            <!--The Consulting based on Process Design Technology-->
-            <a href="./index.html">프로세스디자인베이스 컨설팅 연구소</a>
-        </h2>
+        <header>
+            <h1>
+                pdbops.com {Process Design-Based Ops.}
+            </h1>
+            <h2>
+                <a href="./index.html">프로세스디자인베이스 컨설팅 연구소</a>
+            </h2>
+        </header>
         <div id="grid">
-            <div id="nav">
-            </div>
-            <div id="content">
-                <div id="container">
-                </div>
-            </div>
+            <nav id="nav"></nav>
+            <main id="content">
+                <div id="container"></div>
+            </main>
         </div>
 
         <script>
-            // load pages with fetch polyfill with ERROR handling
-                    fetch('Menu').then(response => {
+            // function: loading pages through fetch API polyfill with ERROR handling
+                function fetchPageContent(url, targetElementSelector) {
+                    fetch(url).then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not OK.');
                         }
                         return response.text();
                     }).then(text => {
-                        const navElement = document.querySelector('#nav');
-                        if (navElement) navElement.innerHTML = text;
-                    }).catch(error => {
-                        console.error('There has been a problem with the fetch operation:', error);
-                    });
-
-                    fetch('Home').then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not OK.');
-                        }
-                        return response.text();
-                    }).then(text => {
-                        const containerElement = document.querySelector('#container');
-                        if (containerElement) {
-                            containerElement.innerHTML = text;
-                            containerElement.scrollTop = 0;
-                        }
-                    }).catch(error => {
-                        console.error('There has been a problem with the fetch operation:', error);
-                    });
-
-                function introFetch(pageTitle) {
-                    fetch(pageTitle).then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not OK.');
-                        }
-                        return response.text();
-                    }).then(text => {
-                        const containerElement = document.querySelector('#container');
-                        if (containerElement) {
-                            containerElement.innerHTML = text;
-                            containerElement.scrollTop = 0;
+                        const targetElement = document.querySelector(targetElementSelector);
+                        if (targetElement) {
+                            targetElement.innerHTML = text;
+                            targetElement.scrollTop = 0;
                         }
                     }).catch(error => {
                         console.error('There has been a problem with the fetch operation:', error);
                     });
                 }
 
-            // another way to calculate all height for issue concerning #container's scrolling
+            // Loading contents on page load
             document.addEventListener("DOMContentLoaded", function() {
+                fetchPageContent('Menu', '#nav');
+                fetchPageContent('Home', '#container');
+
+            // calculating all height for scrolling issue
                 function adjustContainerHeight() {
-                    const headers = document.querySelectorAll('h1, h2'); //h1 and h2 (all header factors)
+                    const headers = document.querySelectorAll('h1, h2');
                     let headerHeight = 0;
 
                     headers.forEach(header => {
@@ -102,10 +76,10 @@
                 window.addEventListener('resize', adjustContainerHeight);
             });
 
-            // prevent contents from the mouse right-click
+            // prevent contents from the mouse right-click event
             document.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
-            })
+            });
         </script>
     </body>
 </html>
