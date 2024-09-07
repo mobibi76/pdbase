@@ -3,8 +3,8 @@
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
     .setTitle('pdbops.com 컨설팅 의뢰서')
-    .setWidth(100%)
-    .setHeight(100%);
+    .setWidth(600)
+    .setHeight(600);
 }
 
 // save the input data into the google spreadsheet
@@ -22,12 +22,12 @@ function submitFormData(formData) {
     formData.name || '',
     formData.email || '',
     formData.gender || '',
-    formData.field_work || '',
-    formData.hope_service || '',
-    formData.area_service || '',
-    formData.date_service || '',
-    formData.select_service ? formData.select_service.join(", ") : '',
-    formData.more_service || '',
+    formData.fieldWork || '',
+    formData.hopeService || '',
+    formData.areaService || '',
+    formData.dateService || '',
+    formData.selectService ? formData.selectService.join(", ") : '',
+    formData.moreService || '',
     formData.remarks ? formData.remarks.join(", ") : ''
   ]);
   
