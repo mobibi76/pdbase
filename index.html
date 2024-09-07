@@ -36,7 +36,25 @@
         <script>
             /*--fetch API-------------------------*/
             // function: define introFetch function
-                function introFetch(pageTitle, targetElementSelector) {
+                function introFetch(pageTitle) {
+                    fetch(pageTitle).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not OK.');
+                        }
+                        return response.text();
+                    }).then(text => {
+                        const containerElement = document.querySelector('#container');
+                        if (containerElement) {
+                            containerElement.innerHTML = text;
+                            containerElement.scrollTop = 0;
+                        }
+                    }).catch(error => {
+                        console.error('There has been a problem with the fetch operation:', error);
+                    });
+                }
+
+            // function: load pages through fetch API with ERROR handle
+                function fetchPageContent(pageTitle, targetElementSelector) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not OK.');
@@ -53,31 +71,10 @@
                     });
                 }
 
-            // function: load pages through fetch API with ERROR handle
-                /*function fetchPageContent(pageTitle, targetElementSelector) {
-                    fetch(pageTitle).then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not OK.');
-                        }
-                        return response.text();
-                    }).then(text => {
-                        const targetElement = document.querySelector(targetElementSelector);
-                        if (targetElement) {
-                            targetElement.innerHTML = text;
-                            targetElement.scrollTop = 0;
-                        }
-                    }).catch(error => {
-                        console.error('There has been a problem with the fetch operation:', error);
-                    });
-                }*/
-
             // Load contents on pages
             document.addEventListener("DOMContentLoaded", function() {
-                introFetch('Menu', '#nav');
-                introFetch('Home', '#container');
-                introFetch('Studies', '#container');
-                introFetch('Customer', '#container');
-                introFetch('Request', '#container');
+                fetchPageContent('Menu', '#nav');
+                fetchPageContent('Home', '#container');
 
             /*--------------------------------------*/
             // calculate all heights for scroll issue
