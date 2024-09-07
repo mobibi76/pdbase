@@ -2,7 +2,7 @@
 
 // open HTML document
 function doGet() {
-  return HtmlService.createHtmlOutputFromFile('pdbopsapply')
+  return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
     .setTitle('컨설팅 서비스 신청')
     .setWidth(600)
     .setHeight(400);
@@ -19,10 +19,10 @@ function submitFormData(formData) {
     formData.hope_service,
     formData.area_service,
     formData.date_service,
-    formData.select_service,
+    formData.select_service.join(", "),
     formData.more_service,
-    formData.remarks
-    ]);
+    formData.remarks.join(", ")
+  ]);
   
   return '감사합니다. 확인후 연락드리겠습니다.';
 }
