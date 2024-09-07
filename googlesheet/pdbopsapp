@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base target="_self">
+        <script>
+            function submitForm() {
+                const formData = {
+                    name: document.getElementsByName('name').value,
+                    email: document.getElementsByName('email').value,
+                    gender: document.getElementsByName('gender').value,
+                    field_work: document.getElementsByName('field_work').value,
+                    hope_service: document.getElementsByName('hope').value,
+                    area_service: document.getElementsByName('area_service').value,
+                    date_service: document.getElementsByName('date_service').value,
+                    select_service: document.getElementsByName('select_service').value,
+                    more_service: document.getElementsByName('more_service').value,
+                    remarks: document.getElementsByName('remarks').value
+                };
+
+                google.script.run.withSuccessHandler(function(response) {
+                    document.getElementById('response').innerHTML = response;
+                }).submitFormData(formData);
+
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>컨설팅 서비스 신청</h1>
+
+        <form onsubmit="return submitForm();">
+            <label for="name">1.이름</label>
+            <input type="text" name="name" placeholder="필수항목" required>
+            <br><br>
+
+            <label for="email">2.이메일</label>
+            <input type="email" name="email" placeholder="필수항목(상담 목적 외에는 수집하지 않습니다)" required>
+            <br><br>
+
+            <p>3.성별</p>
+            <label for="gender">남성</label>
+            <input type="radio" id="male" name="gender" value="male" placeholder="선택항목">
+            <br>
+            <label for="gender">여성</label>
+            <input type="radio" id="female" name="gender" value="female" placeholder="선택항목">
+            <br><br>
+
+            <label for="field_work">4.분야/업무</label>
+            <input type="text" name="field_work" placeholder="선택항목(예:게임제작/기획)">
+            <br><br>
+
+            <label for="hope_service">5.희망 컨설팅 내용</label>
+            <textarea name="hope_service" rows="4" cols="50" placeholder="필수항목(희망하시는 내용을 구체적으로 작성해 주시면 더욱 좋습니다)" required>
+            <br><br>            
+
+            <label for="area_service">6.컨설팅 지역</label>
+            <textarea name="hope" rows="4" cols="50" placeholder="필수항목(희망하시는 내용을 구체적으로 작성해 주시면 더욱 좋습니다.)" required>
+            <br><br>
+
+
+        </form>
+
+        <div id="response"></div>
+    </body>
+</html>
