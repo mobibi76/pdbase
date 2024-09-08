@@ -24,7 +24,7 @@ function setupSheet() {
 function doGet() {
 
     // from external site url
-    const url = 'https://pdbops.com/Management'
+    const url = ''
 
     return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
         .setTitle('pdbops.com 컨설팅 의뢰서')
