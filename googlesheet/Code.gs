@@ -22,7 +22,7 @@
 // open html: doGet(e) function
     function doGet(e) {
         // from external site url
-        const url = 'https://pdbops.com/source/form.html';
+        const url = 'https://pdbops.com';
 
         try {
             const response = UrlFetchApp.fetch(url);
