@@ -135,11 +135,29 @@
 
                 console.log(formData);
 
-                google.script.run.withSuccessHandler(function(response) {
+                // using App-Script Runtime
+                /*google.script.run.withSuccessHandler(function(response) {
                     document.getElementById('response').innerHTML = response;
                     document.querySelector('form').reset();
-                }).submitFormData(formData);
+                }).submitFormData(formData);*/
 
+                // using fetch API
+                fetch('https://script.google.com/macros/s/AKfycbzkTbKLadfBwk_K4og7gOPwClr-6sc7kdGYoZ6i1KiGUq4a6KevmA3hKF2bQb4almft/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.text())
+                .then(responseText => {
+                    document.getElementById('response').textContent = responseText;
+                    document.querySelector('form').reset();
+                })
+                .catch(error => console.error('Error:', error));
+
+                // prevents default form submission
                 return false;
             }
         </script>

@@ -1,4 +1,4 @@
-/*Google Spread-Sheet Extention App-Script Use*/
+/*Google Spread-Sheet Extention App-Script Use or Apply*/
 
 // setup Google spresdsheet
 function setupSheet() {
@@ -17,8 +17,8 @@ function doGet() {
         .setHeight(1000);
 }
 
-// save form-data to the Google spread-sheet
-function submitFormData(formData) {
+// save form-data to the Google spread-sheet: using App-Script Runtime
+/*function submitFormData(formData) {
     // check the form-data
     if (!formData) {
         return 'There was no formData.';
@@ -51,4 +51,36 @@ function submitFormData(formData) {
     ]);
 
 return '감사합니다. 확인 후 연락드리겠습니다.';
+}*/
+
+// save form-data to the Google spread-sheet: using Fetch API Runtime
+function doPost(e) {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
+    if (!sheet) {
+        return ContentService.createTextOutput('No sheet found');
+    }
+
+    var formData = JSON.parse(e.postData.contents);
+
+    // Korean local time for records
+    const timeZone = 'Asia/Seoul';
+    const now = new Date();
+    const koreanTime = Utilities.formatDate(now, timeZone, 'yyyy-MM-dd HH:mm:ss');
+
+    // add data(html) to the spread-sheet
+    sheet.appendRow([
+        koreanTime || '',
+        formData.name || '',
+        formData.email || '',
+        formData.gender || '',
+        formData.fieldWork || '',
+        formData.hopeService || '',
+        formData.areaService || '',
+        formData.dateService || '',
+        formData.selectService ? formData.selectService.join(", ") : '',
+        formData.moreService || '',
+        formData.remarks ? formData.remarks.join(", ") : ''
+    ]);
+
+    return ContentService.createTextOutput('Data saved successfully');
 }
