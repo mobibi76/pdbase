@@ -5,6 +5,10 @@
     --default-color: white;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 @font-face {
     font-family: 'freesentation8';
     src: url('../font/Freesentation-8ExtraBold.ttf') format('truetype');
@@ -33,6 +37,8 @@ html, body {
 #container {
     flex: 1;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     background-color: var(--default-color);
     max-width: 1000px;
 }
