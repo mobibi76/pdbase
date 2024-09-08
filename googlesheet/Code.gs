@@ -18,7 +18,7 @@ function doGet() {
 }
 
 // save form-data to the Google spread-sheet: using App-Script Runtime
-/*function submitFormData(formData) {
+function submitFormData(formData) {
     // check the form-data
     if (!formData) {
         return 'There was no formData.';
@@ -50,17 +50,30 @@ function doGet() {
         formData.remarks ? formData.remarks.join(", ") : ''
     ]);
 
-return '감사합니다. 확인 후 연락드리겠습니다.';
-}*/
+return 'Data saved successfully';
+}
 
 // save form-data to the Google spread-sheet: using Fetch API Runtime
 function doPost(e) {
+    Logger.log(e.postData.contents);
+
+    if (!e || !e.postData || !e.postData.contents) {
+        return ContentService.createTextOutput('Invalid request: no postData');
+    }
+
+    Logger.log(e.postData.contents);
+
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
     if (!sheet) {
         return ContentService.createTextOutput('No sheet found');
     }
 
-    var formData = JSON.parse(e.postData.contents);
+    try {
+        var formData = JSON.parse(e.postData.contents);
+    } catch (error) {
+        Logger.log('Error parsing JSON: ' + error);
+        return ContentService.createTextOutput('Invalid JSON format');
+    }
 
     // Korean local time for records
     const timeZone = 'Asia/Seoul';

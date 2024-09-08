@@ -5,119 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pdbops.com 컨설팅 서비스 신청폼</title>
 
-        <!--스타일은 chatGPT4.o이 제안-->
-        <style>
-            body {
-                font-family: '맑은 고딕', 'Malgun Gothic', Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-        
-            h3 {
-                text-align: center;
-                padding: 10px;
-                background-color: ghostwhite;
-                margin: 10px;
-                font-size: 24px;
-                font-weight: 500;
-            }
-        
-            form {
-                width: 90%;
-                max-width: 1000px;
-                margin: 0 auto;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-            }
-        
-            .form-group {
-                margin-bottom: 20px;
-            }
-        
-            label, p {
-                font-size: 16px;
-                font-weight: 500;
-                color: dimgrey;
-                margin-bottom: 4px;
-                display: block;
-            }
-        
-            input[type="text"],
-            input[type="email"],
-            input[type="date"],
-            textarea {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid lightslategray;
-                font-size: 16px;
-            }
-        
-            input[type="radio"],
-            input[type="checkbox"] {
-                margin-right: 3px;
-                vertical-align: middle;
-            }
-        
-            .radio-group, .checkbox-group {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 5px;
-            }
-        
-            .radio-group label, .checkbox-group label {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-            }
-        
-            input[type="submit"] {
-                background-color: dodgerblue;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 18px;
-                font-weight: 600;
-            }
-        
-            input[type="submit"]:hover {
-                background-color: chocolate;
-            }
-        
-            #response {
-                font-size: 16px;
-                color: chocolate;
-                font-weight: 600;
-            }
-        
-            .form-group.submit-group {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-        
-            @media (max-width: 800px) {
-                .radio-group, .checkbox-group {
-                    grid-template-columns: 1fr;
-                }
-        
-                input[type="submit"] {
-                    width: 100%;
-                }
-        
-                .form-group.submit-group {
-                    flex-direction: column;
-                }
-        
-                #response {
-                    margin-top: 10px;
-                }
-            }
-        </style>
-
         <script>
             function submitForm() {
                 const formData = {
@@ -142,7 +29,7 @@
                 }).submitFormData(formData);*/
 
                 // using fetch API
-                fetch('https://script.google.com/macros/s/AKfycbzkTbKLadfBwk_K4og7gOPwClr-6sc7kdGYoZ6i1KiGUq4a6KevmA3hKF2bQb4almft/exec', {
+                fetch('https://script.google.com/macros/s/AKfycbxb37wN37uPl8LKoKfKE-4nUrVF_oSwYTRKz5U4T-AzQet9bTyQgBn4pAE4E78x6uAhug/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

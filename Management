@@ -17,14 +17,8 @@
 
         console.log(formData);
 
-        // using App-Script Runtime
-        /*google.script.run.withSuccessHandler(function(response) {
-            document.getElementById('response').innerHTML = response;
-            document.querySelector('form').reset();
-        }).submitFormData(formData);*/
-
         // using fetch API
-        fetch('https://script.google.com/macros/s/AKfycbzkTbKLadfBwk_K4og7gOPwClr-6sc7kdGYoZ6i1KiGUq4a6KevmA3hKF2bQb4almft/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxb37wN37uPl8LKoKfKE-4nUrVF_oSwYTRKz5U4T-AzQet9bTyQgBn4pAE4E78x6uAhug/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
