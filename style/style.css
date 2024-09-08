@@ -34,8 +34,7 @@ html, body {
     flex: 1;
     overflow-y: auto;
     background-color: var(--default-color);
-    min-width: 650px;
-    max-width: 850px;
+    max-width: 1000px;
 }
 
 #nav {
@@ -84,7 +83,7 @@ h2 {
     background-color: var(--primary-color);
 }
 
-@media(max-width: 750px) {
+@media(max-width: 800px) {
     #grid {
         display: block;
     }
