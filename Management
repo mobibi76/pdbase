@@ -1,2 +1,5 @@
 <img src="./image/request_notice.png" width="100%">
 <iframe src="./source/form.html" width="100%"></iframe>
+<footer id="footer"></footer>
+    <p>Hamn's IP cannot be used without permission.</p>
+</footer>
