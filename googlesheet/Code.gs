@@ -9,7 +9,7 @@ function setupSheet() {
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 }
 
-// oepn the html file
+// oepn the html file: App-Script supports doGet()'internal runtime' and doPost()'external runtime' both
 function doGet() {
     return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
         .setTitle('pdbops.com 컨설팅 의뢰서')
