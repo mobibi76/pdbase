@@ -1,16 +1,31 @@
-/*Google Spread-Sheet Extention App-Script Use or Apply*/
+/*Google Spread-Sheet Extention App-Script Use*/
 
 // setup Google spresdsheet
 function setupSheet() {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops application check');
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops management');
 
-    // setup the label
-    var headers = ['Application', 'Name', 'Email', 'Gender', 'Field/Work', 'Request', 'Area', 'Date', 'Services', 'Opinion', 'Remarks'];
+    // setup label
+    var headers = ['applicationDate',
+                  'customerName',
+                  'customerEmail',
+                  'customerGender',
+                  'field/work',
+                  'requirements',
+                  'serviceZone',
+                  'serviceDate',
+                  'wantedServices',
+                  'anotherOpinion',
+                  'remarks'
+                  ];
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 }
 
-// oepn the html file: App-Script supports doGet()'internal runtime' and doPost()'external runtime' both
+// oepn the html file: doGet() function
 function doGet() {
+
+    // from external site url
+    const url = 'https://pdbops.com/Management'
+
     return HtmlService.createHtmlOutputFromFile('pdbopsapply.html')
         .setTitle('pdbops.com 컨설팅 의뢰서')
         .setWidth(1000)
