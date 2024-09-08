@@ -1,43 +1,5 @@
 <img src="./image/request_notice.png" width="100%">
 
-<script>
-    function submitForm() {
-        const formData = {
-            name: document.querySelector('input[id="name"]').value,
-            email: document.querySelector('input[id="email"]').value,
-            gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
-            fieldWork: document.querySelector('input[id="fieldwork"]').value,
-            hopeService: document.querySelector('textarea[id="hopeservice"]').value,
-            areaService: document.querySelector('input[id="areaservice"]').value,
-            dateService: document.querySelector('input[id="dateservice"]').value,
-            selectService: Array.from(document.querySelectorAll('input[name="selectservice"]:checked')).map(el => el.value),
-            moreService: document.querySelector('textarea[id="moreservice"]').value,
-            remarks: Array.from(document.querySelectorAll('input[name="remark"]:checked')).map(el => el.value)
-        };
-
-        console.log(formData);
-
-        // using fetch API
-        fetch('https://script.google.com/macros/s/AKfycbxb37wN37uPl8LKoKfKE-4nUrVF_oSwYTRKz5U4T-AzQet9bTyQgBn4pAE4E78x6uAhug/exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.text())
-        .then(responseText => {
-            document.getElementById('response').textContent = responseText;
-            document.querySelector('form').reset();
-        })
-        .catch(error => console.error('Error:', error));
-
-        // prevents default form submission
-        return false;
-    }
-</script>
-
 <h3>pdbops.com 컨설팅 서비스 신청폼</h3>
 
 <form onsubmit="return submitForm();">
@@ -130,3 +92,41 @@
         <div id="response"></div>
     </div>
 </form>
+
+<script>
+    function submitForm() {
+        const formData = {
+            name: document.querySelector('input[id="name"]').value,
+            email: document.querySelector('input[id="email"]').value,
+            gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
+            fieldWork: document.querySelector('input[id="fieldwork"]').value,
+            hopeService: document.querySelector('textarea[id="hopeservice"]').value,
+            areaService: document.querySelector('input[id="areaservice"]').value,
+            dateService: document.querySelector('input[id="dateservice"]').value,
+            selectService: Array.from(document.querySelectorAll('input[name="selectservice"]:checked')).map(el => el.value),
+            moreService: document.querySelector('textarea[id="moreservice"]').value,
+            remarks: Array.from(document.querySelectorAll('input[name="remark"]:checked')).map(el => el.value)
+        };
+
+        console.log(formData);
+
+        // using fetch API
+        fetch('https://script.google.com/macros/s/AKfycbxb37wN37uPl8LKoKfKE-4nUrVF_oSwYTRKz5U4T-AzQet9bTyQgBn4pAE4E78x6uAhug/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.text())
+        .then(responseText => {
+            document.getElementById('response').textContent = responseText;
+            document.querySelector('form').reset();
+        })
+        .catch(error => console.error('Error:', error));
+
+        // prevents default form submission
+        return false;
+    }
+</script>
