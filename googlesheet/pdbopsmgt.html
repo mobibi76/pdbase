@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pdbops.com 컨설팅 서비스 신청폼</title>
-
         <script>
             function submitForm() {
                 const formData = {
@@ -19,31 +18,12 @@
                     moreService: document.querySelector('textarea[id="moreservice"]').value,
                     remarks: Array.from(document.querySelectorAll('input[name="remark"]:checked')).map(el => el.value)
                 };
-
                 console.log(formData);
-
-                // using App-Script Runtime
-                /*google.script.run.withSuccessHandler(function(response) {
+                // using App-Script runtime
+                google.script.run.withSuccessHandler(function(response) {
                     document.getElementById('response').innerHTML = response;
                     document.querySelector('form').reset();
-                }).submitFormData(formData);*/
-
-                // using fetch API
-                fetch('https://script.google.com/macros/s/AKfycbxb37wN37uPl8LKoKfKE-4nUrVF_oSwYTRKz5U4T-AzQet9bTyQgBn4pAE4E78x6uAhug/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
-                    },
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.text())
-                .then(responseText => {
-                    document.getElementById('response').textContent = responseText;
-                    document.querySelector('form').reset();
-                })
-                .catch(error => console.error('Error:', error));
-
+                }).submitFormData(formData);
                 // prevents default form submission
                 return false;
             }
@@ -59,13 +39,11 @@
                 <label for="name">1. 이름*</label>
                 <input type="text" id="name" required>
             </div>
-
             <!--이메일-->
             <div class="form-group">
                 <label for="email">2. 이메일*</label>
                 <input type="email" id="email" required>
             </div>
-
             <!--성별-->
             <div class="form-group radio-group">
                 <p>3. 성별*</p>
@@ -73,32 +51,27 @@
                 <label><input type="radio" name="gender" value="여성" required> 여성</label>
                 <label><input type="radio" name="gender" value="남성"> 남성</label>
             </div>
-
             <!--분야/업무-->
             <div class="form-group">
                 <label for="fieldwork">4. 분야/업무*</label>
                 <input type="text" id="fieldwork" required>
             </div>
-
-            <!--희망 내용-->
+            <!--희망내용-->
             <div class="form-group">
                 <label for="hopeservice">5. 희망 내용*</label>
                 <textarea id="hopeservice" rows="4" required></textarea>
             </div>
-
-            <!--희망 지역-->
+            <!--희망지역-->
             <div class="form-group">
                 <label for="areaservice">6. 희망 지역*</label>
                 <input type="text" id="areaservice" required>
             </div>
-
-            <!--희망 날짜-->
+            <!--희망날짜-->
             <div class="form-group">
                 <label for="dateservice">7. 희망 날짜*</label>
                 <input type="date" id="dateservice" required>
             </div>
-
-            <!--희망 서비스-->
+            <!--희망서비스-->
             <div class="form-group checkbox-group">
                 <p>8. 희망 서비스(복수선택 가능)</p>
                 <br>
@@ -113,14 +86,12 @@
                 <label><input type="checkbox" name="selectservice" value="애자일프로세스"> 특화 교육/컨설팅_애자일 프로세스 코칭</label>
                 <label><input type="checkbox" name="selectservice" value="기타제안"> 기타 제안</label>
             </div>
-
-            <!--제안 의견-->
+            <!--제안의견-->
             <div class="form-group">
                 <label for="moreservice">9. (위 8)의 제안 의견</label>
                 <textarea id="moreservice" rows="4"></textarea>
             </div>
-
-            <!--참고 사항-->
+            <!--참고사항-->
             <div class="form-group checkbox-group">
                 <p>10. 참고 사항(다중선택 가능)</p>
                 <br>
@@ -135,8 +106,7 @@
                 <label><input type="checkbox" name="remark" value="학생"> 학생(대학원 포함)</label>
                 <label><input type="checkbox" name="remark" value="일반"> 일반(직장인 포함)</label>
             </div>
-
-            <!--제출 버튼-->
+            <!--제출버튼-->
             <div class="form-group">
                 <input type="submit" value="신청폼 제출">
                 <div id="response"></div>
