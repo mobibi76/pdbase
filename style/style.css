@@ -65,6 +65,8 @@ html, body {
 }
 
 #footer {
+    position: sticky;
+    bottom: 0px;
     font-family: 'freesentation6';
     background-color: var(--accent-color);
     color: var(--secondary-color);
