@@ -17,7 +17,7 @@ function doGet() {
         .setHeight(1000);
 }
 
-// save form-data to the Google spread-sheet: using App-Script Runtime
+// save form-data to the Google spread-sheet: using internal App-Script Runtime
 function submitFormData(formData) {
     // check the form-data
     if (!formData) {
