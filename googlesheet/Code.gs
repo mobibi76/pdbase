@@ -55,6 +55,7 @@ return 'Data saved successfully';
 
 // save form-data to the Google spread-sheet: using Fetch API Runtime
 function doPost(e) {
+    Logger.log(JSON.stringify(e));
     Logger.log(e.postData.contents);
 
     if (!e || !e.postData || !e.postData.contents) {
