@@ -8,22 +8,22 @@
         <script>
             function submitForm() {
                 const formData = {
-                    name: document.querySelector('input[id="name"]').value,
-                    email: document.querySelector('input[id="email"]').value,
-                    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
+                    customerName: document.querySelector('input[id="name"]').value,
+                    customerEmail: document.querySelector('input[id="email"]').value,
+                    customerGender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
                     fieldWork: document.querySelector('input[id="fieldwork"]').value,
-                    hopeService: document.querySelector('textarea[id="hopeservice"]').value,
-                    areaService: document.querySelector('input[id="areaservice"]').value,
-                    dateService: document.querySelector('input[id="dateservice"]').value,
-                    selectService: Array.from(document.querySelectorAll('input[name="selectservice"]:checked')).map(el => el.value),
-                    moreService: document.querySelector('textarea[id="moreservice"]').value,
+                    requirements: document.querySelector('textarea[id="hopeservice"]').value,
+                    serviceZone: document.querySelector('input[id="areaservice"]').value,
+                    serviceDate: document.querySelector('input[id="dateservice"]').value,
+                    wantedServices: Array.from(document.querySelectorAll('input[name="selectservice"]:checked')).map(el => el.value),
+                    anotherOpinion: document.querySelector('textarea[id="moreservice"]').value,
                     remarks: Array.from(document.querySelectorAll('input[name="remark"]:checked')).map(el => el.value)
                 };
 
                 console.log(formData);
 
                 // using fetch API
-                fetch('...', {
+                fetch('YOUR_WEB_APP_URL_HERE', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
