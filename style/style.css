@@ -37,7 +37,7 @@ html, body {
 #container {
     flex: 1;
     overflow-y: auto;
-    -ms-overflow-style: none;
+    /*-ms-overflow-style: none;*/
     scrollbar-width: none;
     background-color: var(--default-color);
     max-width: 1000px;
