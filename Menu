@@ -1,7 +1,7 @@
 <ul>
-    <li><a href="#!Home" onclick="introFetch('Home')">소개</a></li>
-    <li><a href="#!Studies" onclick="introFetch('Studies')">철학</a></li>
-    <li><a href="#!Customer" onclick="introFetch('Customer')">고객</a></li>
-    <li><a href="#!Request" onclick="introFetch('Request')">신청</a></li>
+    <li><a href="#!Inroduction" onclick="introFetch('Home')">소개</a></li>
+    <li><a href="#!Knowledge" onclick="introFetch('Studies')">철학</a></li>
+    <li><a href="#!History" onclick="introFetch('Customer')">고객</a></li>
+    <li><a href="#!Business" onclick="introFetch('Request')">신청</a></li>
     <li><a href="#!RequestOps" onclick="introFetch('Management')">공사</a></li>
 </ul>
