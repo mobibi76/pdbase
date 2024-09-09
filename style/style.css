@@ -108,7 +108,7 @@ footer {
     margin-top: auto;
 }
 
-@media(max-width: 600px) {
+/*@media(max-width: 600px) {
     #grid {
         display: block;
     }
@@ -125,4 +125,4 @@ footer {
         border-bottom: none;
         margin-right: 40px;
     }
-}
+}*/
