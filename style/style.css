@@ -26,7 +26,7 @@ html, body {
 
 #grid {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 100px 1fr;
 }
 
 #content {
@@ -56,6 +56,11 @@ html, body {
     font-size: 28px;
     color: var(--primary-color);
     text-decoration: none;
+}
+
+#nav ul {
+    margin: 5px;
+    padding: 5px;
 }
 
 #nav li {
@@ -102,7 +107,7 @@ footer {
     margin-top: auto;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 600px) {
     #grid {
         display: block;
     }
