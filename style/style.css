@@ -111,7 +111,7 @@ footer p {
 }
 
 iframe {
-    height: auto;
+    height: 100vh;
 }
 
 /*@media(max-width: 600px) {
