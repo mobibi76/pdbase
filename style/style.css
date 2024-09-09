@@ -104,9 +104,7 @@ h2 {
 
 @media(max-width: 800px) {
     #grid {
-        /*display: block;*/
-        display: flex;
-        flex-direction: column;
+        display: block;
     }
 
     #nav {
@@ -120,10 +118,5 @@ h2 {
         display: inline-block;
         border-bottom: none;
         margin-right: 40px;
-    }
-
-    #footer {
-        flex-shrink: 0px;
-        position: relative;
     }
 }
