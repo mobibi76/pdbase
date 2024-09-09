@@ -96,6 +96,7 @@ footer {
     position: sticky;
     bottom: 0px;
     font-family: 'freesentation6';
+    font-size: 20px;
     background-color: var(--accent-color);
     color: var(--secondary-color);
     text-align: center;
