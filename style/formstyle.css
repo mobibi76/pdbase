@@ -1,0 +1,106 @@
+:root {
+    --default-color: white;
+    --primary-color: dimgray;
+    --secondary-color: ghostwhite;
+    --accent-color: lightslategray;
+}
+
+@font-face {
+    font-family: 'freesentation8';
+    src: url('../font/Freesentation-8ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'freesentation6';
+    src: url('../font/Freesentation-6SemiBold.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'freesentation6';
+    font-size: 20px;
+    background-color: var(--default-color);
+    color: var(--primary-color);
+}
+
+form {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+}
+
+h3 {
+    margin: 10px;
+    font-family: 'freesentation8';
+    font-size: 28px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: var(--default-color);
+    font-family: freesentation6;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.radio-group,
+.checkbox-group {
+    margin-bottom: 20px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-family: 'freesentation8';
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: dodgerblue;
+}
+
+#response {
+    margin-top: 20px;
+    text-align: center;
+}
