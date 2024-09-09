@@ -116,7 +116,6 @@ h2 {
 
     #nav li {
         display: inline-block;
-        border-bottom: none;
         margin-right: 40px;
     }
 }
