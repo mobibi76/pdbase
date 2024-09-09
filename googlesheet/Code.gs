@@ -67,7 +67,7 @@
     }*/
 
 // send formData to Google sheet using fetch
-    function doPost(e) {
+    /*function doPost(e) {
         // get active sheet
         var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops management');
         if (!sheet) {
@@ -101,4 +101,54 @@
             Logger.log('Error processing POST data: ' + error);
             return ContentService.createTextOutput('Error processing data').setMimeType(ContentService.MimeType.TEXT);
         }
+    }*/
+
+// send formData to Google sheet using fetch: try to solve CROS header ussue
+    function doPost(e) {
+        Logger.log(e.postData.contents);
+    
+        if (!e || !e.postData || !e.postData.contents) {
+            return ContentService.createTextOutput('Invalid request: no postData')
+                .setMimeType(ContentService.MimeType.TEXT)
+                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com/source/form.html');
+        }
+    
+        var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops management');
+        if (!sheet) {
+            return ContentService.createTextOutput('No sheet found')
+                .setMimeType(ContentService.MimeType.TEXT)
+                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com/source/form.html');
+        }
+    
+        try {
+            var formData = JSON.parse(e.postData.contents);
+        } catch (error) {
+            Logger.log('Error parsing JSON: ' + error);
+            return ContentService.createTextOutput('Invalid JSON format')
+                .setMimeType(ContentService.MimeType.TEXT)
+                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com/source/form.html');
+        }
+    
+        const timeZone = 'Asia/Seoul';
+        const now = new Date();
+        const koreanTime = Utilities.formatDate(now, timeZone, 'yyyy-MM-dd HH:mm:ss');
+    
+        sheet.appendRow([
+            koreanTime || '',
+            formData.name || '',
+            formData.email || '',
+            formData.gender || '',
+            formData.fieldWork || '',
+            formData.hopeService || '',
+            formData.areaService || '',
+            formData.dateService || '',
+            formData.selectService ? formData.selectService.join(", ") : '',
+            formData.moreService || '',
+            formData.remarks ? formData.remarks.join(", ") : ''
+        ]);
+    
+        return ContentService.createTextOutput('Data saved successfully')
+            .setMimeType(ContentService.MimeType.TEXT)
+            .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com/source/form.html');
     }
+    
