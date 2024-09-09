@@ -68,14 +68,8 @@
                 });
             }
 
-            /*--DOMContentLoaded--*/
-            document.addEventListener("DOMContentLoaded", function() {
-                // load initial contents on pages
-                Promise.all([
-                    fetchPageContent('Menu', '#nav'),
-                    fetchPageContent('Home', '#container')
-                ]).then(() => {
-                    // calculate header height and adjust flex, nav, container heights
+            /*--load content on page--*/
+                    // function: calculate header, flex, nav, container heights
                     function adjustContainerHeight() {
                         const headers = document.querySelectorAll('header h1, header h2');
                         let headerHeight = 0;
@@ -95,6 +89,12 @@
                         document.querySelector('#container').style.height = `${containerHeight}px`;
                     }
 
+            document.addEventListener("DOMContentLoaded", function() {
+                // DOMContentLoaded control and adjust Heithts
+                Promise.all([
+                    fetchPageContent('Menu', '#nav'),
+                    fetchPageContent('Home', '#container')
+                ]).then(() => {
                     adjustContainerHeight();
                     window.addEventListener('resize', adjustContainerHeight);
                 });

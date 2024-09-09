@@ -38,6 +38,10 @@ html, body {
     border-bottom: 0.4rem var(--primary-color) dashed;
 }
 
+#nav ul {
+    margin: 0px;
+}
+
 #nav li {
     display: inline-block;
     margin-right: 40px;
