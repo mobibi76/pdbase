@@ -103,5 +103,9 @@ footer {
     margin-top: auto;
 }
 
+footer p {
+    margin: 0px;
+}
+
 /*@media(max-width: 600px) {
 }*/
