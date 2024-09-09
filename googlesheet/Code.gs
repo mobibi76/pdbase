@@ -106,6 +106,8 @@
 // send formData to Google sheet using fetch: try to solve CROS header origin issue
     function doPost(e) {
         Logger.log(e.postData.contents);
+
+        var allowedOrigin = 'https://pdbops.com';
     
         if (!e || !e.postData || !e.postData.contents) {
             return ContentService.createTextOutput('Invalid request: no postData')
@@ -149,5 +151,5 @@
     
         return ContentService.createTextOutput('Data saved successfully')
             .setMimeType(ContentService.MimeType.TEXT)
-            .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com');
+            .setHeader('Access-Control-Allow-Origin', allowedOrigin);
     }
