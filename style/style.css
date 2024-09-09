@@ -33,7 +33,6 @@ html, body {
 #nav {
     display: flex;
     flex-direction: row;
-    white-space: nowrap;
     background-color: var(--secondary-color);
     border-bottom: 0.4rem var(--primary-color) dashed;
 }
@@ -57,7 +56,6 @@ html, body {
 #container {
     display: flex;
     flex-direction: column;
-    flex: 1;
     overflow-y: auto;
     scrollbar-width: none;
     background-color: var(--default-color);
@@ -75,8 +73,6 @@ h1 {
     font-size: 20px;
     color: var(--primary-color);
     text-align: center;
-    border-bottom: 0.8rem var(--primary-color) solid;
-    border-left: 0.8rem var(--primary-color) solid;
     background-color: var(--secondary-color);
 }
 
@@ -86,13 +82,10 @@ h2 {
     font-size: 28px;
     color: var(--secondary-color);
     text-align: center;
-    border-bottom: 0.8rem var(--primary-color) solid;
-    border-left: 0.8rem var(--secondary-color) solid;
     background-color: var(--primary-color);
 }
 
 footer {
-    display: block;
     position: sticky;
     bottom: 0px;
     font-family: 'freesentation6';
@@ -101,7 +94,6 @@ footer {
     color: var(--secondary-color);
     text-align: center;
     border-top: 0.4rem var(--primary-color) dashed;
-    margin-top: auto;
 }
 
 footer p {
