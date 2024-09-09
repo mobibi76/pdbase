@@ -79,6 +79,7 @@
 
                         const windowHeight = window.innerHeight;
                         const flexHeight = windowHeight - headerHeight;
+                        document.querySelector('#flex').style.height = `${flexHeight}px`;
 
                         const navElement = document.querySelector('#nav');
                         if (navElement) {
