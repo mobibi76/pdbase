@@ -43,6 +43,7 @@ html, body {
 #nav ul {
     list-style-type: none;
     margin: 0px;
+    padding: 0px;
 }
 
 #nav li {
@@ -51,7 +52,6 @@ html, body {
 }
 
 #nav li:last-child {
-    margin-left: 0px;
     margin-right: 0px;
 }
 
