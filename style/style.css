@@ -119,8 +119,4 @@ footer {
         border-bottom: none;
         margin-right: 40px;
     }
-
-    #container {
-        min-height: 100vh;
-    }
 }
