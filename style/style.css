@@ -33,18 +33,25 @@ html, body {
 #nav {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: var(--secondary-color);
     border-bottom: 0.4rem var(--primary-color) dashed;
     width: 100%;
 }
 
 #nav ul {
+    list-style-type: none;
     margin: 0px;
 }
 
 #nav li {
     display: inline-block;
     margin-right: 40px;
+}
+
+#nav li:last-child {
+    margin-right: 0px;
 }
 
 #nav a {
@@ -95,6 +102,7 @@ footer {
     color: var(--secondary-color);
     text-align: center;
     border-top: 0.4rem var(--primary-color) dashed;
+    margin-top: auto;
 }
 
 footer p {
