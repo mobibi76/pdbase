@@ -16,7 +16,7 @@
         <!--use: jQuery Google CDN-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" async></script>
 
-        <!--use: fetch API-->
+        <!--use: fetch.js-->
         <script src="./source/fetch.js"></script>
     </head>
 
@@ -34,7 +34,7 @@
         </div>
 
         <script>
-            /*--fetch API control--*/
+            /*--fetch.js control--*/
                 // function: define introFetch function
                 function introFetch(pageTitle) {
                     fetch(pageTitle).then(response => {
@@ -53,7 +53,7 @@
                     });
                 }
 
-                // function: load pages through fetch API with ERROR handle
+                // function: load pages through fetch.js with ERROR handle
                 function fetchPageContent(pageTitle, targetElementSelector) {
                     fetch(pageTitle).then(response => {
                         if (!response.ok) {
@@ -78,7 +78,7 @@
                 fetchPageContent('Home', '#container');
 
 
-                // calculate header height and remains for scroll issue
+                // calculate header height and remains for y scroll
                 function adjustContainerHeight() {
                     const headers = document.querySelectorAll('h1, h2');
                     let headerHeight = 0;
@@ -95,7 +95,7 @@
                 window.addEventListener('resize', adjustContainerHeight);
             });
 
-            /*--prevent contents from the mouse right-click event--*/
+            /*--prevent contents from the mouse right click event--*/
             document.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
             });
