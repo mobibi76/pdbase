@@ -112,14 +112,14 @@
         if (!e || !e.postData || !e.postData.contents) {
             return ContentService.createTextOutput('Invalid request: no postData')
                 .setMimeType(ContentService.MimeType.TEXT)
-                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com');
+                .setHeader('Access-Control-Allow-Origin', allowedOrigin);
         }
     
         var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('pdbops management');
         if (!sheet) {
             return ContentService.createTextOutput('No sheet found')
                 .setMimeType(ContentService.MimeType.TEXT)
-                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com');
+                .setHeader('Access-Control-Allow-Origin', allowedOrigin);
         }
     
         try {
@@ -128,7 +128,7 @@
             Logger.log('Error parsing JSON: ' + error);
             return ContentService.createTextOutput('Invalid JSON format')
                 .setMimeType(ContentService.MimeType.TEXT)
-                .setHeader('Access-Control-Allow-Origin', 'https://pdbops.com');
+                .setHeader('Access-Control-Allow-Origin', allowedOrigin);
         }
     
         const timeZone = 'Asia/Seoul';
