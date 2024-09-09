@@ -63,18 +63,6 @@ html, body {
     padding: 5px;
 }
 
-#footer {
-    display: block;
-    position: sticky;
-    bottom: 0px;
-    font-family: 'freesentation6';
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    text-align: center;
-    border-top: 0.4rem var(--primary-color) dashed;
-    margin-top: auto;
-}
-
 a {
     color: var(--secondary-color);
     text-decoration: none;
@@ -102,6 +90,18 @@ h2 {
     background-color: var(--primary-color);
 }
 
+footer {
+    display: block;
+    position: sticky;
+    bottom: 0px;
+    font-family: 'freesentation6';
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    text-align: center;
+    border-top: 0.4rem var(--primary-color) dashed;
+    margin-top: auto;
+}
+
 @media(max-width: 800px) {
     #grid {
         display: block;
@@ -116,6 +116,7 @@ h2 {
 
     #nav li {
         display: inline-block;
+        border-bottom: none;
         margin-right: 40px;
     }
 }
