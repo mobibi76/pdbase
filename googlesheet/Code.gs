@@ -103,7 +103,7 @@
         }
     }*/
 
-// send formData to Google sheet using fetch: try to solve CROS header ussue
+// send formData to Google sheet using fetch: try to solve CROS header origin issue
     function doPost(e) {
         Logger.log(e.postData.contents);
     
