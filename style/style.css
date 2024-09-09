@@ -110,5 +110,9 @@ footer p {
     margin: 0px;
 }
 
+iframe {
+    height: auto;
+}
+
 /*@media(max-width: 600px) {
 }*/
