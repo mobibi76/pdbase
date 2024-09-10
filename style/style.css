@@ -110,6 +110,12 @@ footer p {
     margin: 0px;
 }
 
+p a {
+    font-size: 28px;
+    color: chocolate;
+    text-decoration: none;
+}
+
 iframe {
     height: 100vh;
 }
