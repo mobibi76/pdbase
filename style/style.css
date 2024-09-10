@@ -22,7 +22,7 @@
 html, body {
     margin: 0px;
     overflow: hidden;
-    filter: grayscale(100%);
+    filter: grayscale(50%);
 }
 
 #flex {
