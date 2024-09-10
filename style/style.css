@@ -69,6 +69,7 @@ html, body {
     scrollbar-width: none;
     background-color: var(--default-color);
     max-width: 1000px;
+    text-align: center;
 }
 
 a {
