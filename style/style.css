@@ -114,5 +114,9 @@ iframe {
     height: 100vh;
 }
 
+img {
+    width: 800px;
+}
+
 /*@media(max-width: 600px) {
 }*/
