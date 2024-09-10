@@ -24,7 +24,7 @@
 
                 console.log(formData);
 
-                // using fetch API
+                // send data through fetch to Google sheet(App-Script web app)
                 fetch('https://script.google.com/macros/s/AKfycbytYrHiEODj4Or2XtblQ1iwp8v1_-WLW8Htq9rxBdjVz9SuLQvdW1G9723wO-7Nn5MEJg/exec', {
                     method: 'POST',
                     headers: {
@@ -37,14 +37,15 @@
                 .then(responseText => {
                     const responseElement = document.getElementById('response');
                     responseElement.textContent = responseText;
+                    // init. form
                     document.querySelector('form').reset();
 
-                    // moving on response message
+                    // move scroll on message(response) 
                     responseElement.scrollIntoView({ behavior: 'smooth' });
                 })
                 .catch(error => console.error('Error:', error));
 
-                // prevents default form submission
+                // prevent empty(default) form
                 return false;
             }
         </script>
