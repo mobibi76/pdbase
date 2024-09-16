@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ko">
     <head>
-        <title>프로세스 디자인 기반 업무 | 리스크 애자일 프로세스 디자인</title>
+        <title>프로세스 디자인 기반 운영 | 리스크 애자일 프로세스와 팀 네트워크 디자인</title>
 
         <!--meta: SEO, mobile ops. and encoding-->
         <meta name="description"
-            content="고객의 목표와 도메인을 체계역학 구조로 만들어 소통망을 효율화하는 리스크 애자일 프로세스 디자인">
-        <meta name="viewport" content="width=device-width" initial-scale="0.2">
+            content="고객의 목표와 도메인에 대한 체계역학 구조 기반 리스크 애자일 프로세스와 팀 네트워크 디자인">
+        <meta name="viewport" content="width=device-width" initial-scale="0.5">
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="./style/style.css">
@@ -19,8 +19,8 @@
 
     <body>
         <header>
-            <h1>pdbops.com {Process Design-Based Ops.}</h1>
-            <h2><a href="./index.html">프로세스디자인-베이스 컨설팅</a></h2>
+            <h1><a href="./index.html">PDBOPS.COM (Process Design-Based Operations)</a></h1>
+            <h2>서비스 소개 (the Service)</h2>
         </header>
 
         <article id="flex">
@@ -94,7 +94,7 @@
                 // DOMContentLoaded control and adjust Heithts
                 Promise.all([
                     fetchPageContent('Menu', '#nav'),
-                    fetchPageContent('Home', '#container')
+                    fetchPageContent('Home_Ko', '#container')
                 ]).then(() => {
                     adjustContainerHeight();
                     window.addEventListener('resize', adjustContainerHeight);
