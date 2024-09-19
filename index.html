@@ -105,6 +105,12 @@
             document.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
             });
+
+            /*--push forward to autoplay the video identified--*/
+            window.onload = function() {
+                var video = document.getElementById("pdbopsVideo");
+                video.play();
+            };
         </script>
     </body>
 </html>
