@@ -3,7 +3,7 @@
   <source src="./notice/pdbops72.mp4" type="video/mp4">
 </video>
 <img src="./notice/notice_en.png" width="100%">
-<div id="me">
+<div id="itsme">
   <p>컨설턴트 소개(발자국)</p>
   <p>"2023년~現在"</p>
   <p>"리스크 프로세스 디자인 기반 컨설팅 서비스 제공"</p>
