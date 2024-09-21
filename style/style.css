@@ -103,6 +103,17 @@ h2 {
     background-color: var(--background-color);
 }
 
+table {
+    font-family: 'freesentation4';
+    font-size: 1.1rem;
+    color: var(--font-color);
+    text-align: left;
+}
+
+table th {
+    font-size: 1.6rem;
+}
+
 footer {
     position: sticky;
     bottom: 0px;
