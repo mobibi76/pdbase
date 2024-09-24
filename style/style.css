@@ -1,3 +1,8 @@
+@font-face {
+    font-family:'freesentation4';
+    src: url('../font/Freesentation-4Regular.ttf') format('truetype');
+}
+
 :root {
     --background-color: whitesmoke;
     --font-color: black;
@@ -90,13 +95,15 @@
 /* new.here.240924*/
 #tooltip {
     position: absolute;
+    font-family: 'freesentation4';
     background-color: var(--border-color);
     color: var(--page-color);
     padding: 4px;
     border-radius: 4px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     display: none;
     z-index: 1000;
+    white-space: pre-line;
 }
 /* new.here.240924*/
 
@@ -129,7 +136,7 @@ h2 {
     background-color: var(--background-color);
 }
 
-table, table tr {
+table {
     font-family: 'freesentation4';
     font-size: 1.1rem;
     color: var(--font-color);
@@ -165,17 +172,16 @@ iframe {
     height: 70%;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     table {
-        font-size: 0.6rem;
+        font-size: 0.6rem !important;
     }
 
     table th {
-        font-size: 1.2rem;
+        font-size: 1.2rem !important;
     }
-}
 
-@font-face {
-    font-family:'freesentation4';
-    src: url('../font/Freesentation-4Regular.ttf') format('truetype');
+    #tooltip {
+        font-size: 0.6rem !important;
+    }
 }
