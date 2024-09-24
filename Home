@@ -5,7 +5,7 @@
 <img src="./notice/notice_en.png" width="100%">
 
 <table>
-    <tr>
+    <tr data-tooltip="Consultant's Foot-print">
         <th colspan="2">컨설턴트 이력</th>
     </tr>
     <tr>
@@ -218,6 +218,9 @@
         </td>
     </tr>
 </table>
+
+<!--tooltip display-->
+<div id="tooltip"></div>
 
 <footer>
   <p id="formlink">
