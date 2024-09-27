@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>pdbops.com 컨설팅 서비스 신청폼</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../style/formstyle.css">
+
+        <script>
+            function submitForm() {
+                const formData = {
+                    customerName: document.querySelector('input[id="name"]').value,
+                    customerEmail: document.querySelector('input[id="email"]').value,
+                    customerGender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '',
+                    fieldWork: document.querySelector('input[id="fieldwork"]').value,
+                    requirements: document.querySelector('textarea[id="hopeservice"]').value,
+                    serviceZone: document.querySelector('input[id="areaservice"]').value,
+                    serviceDate: document.querySelector('input[id="dateservice"]').value,
+                    wantedServices: Array.from(document.querySelectorAll('input[name="selectservice"]:checked')).map(el => el.value),
+                    anotherOpinion: document.querySelector('textarea[id="moreservice"]').value,
+                    remarks: Array.from(document.querySelectorAll('input[name="remark"]:checked')).map(el => el.value)
+                };
+
+                console.log(formData);
+
+                // send data through fetch to Google sheet(App-Script web app)
+                fetch('https://script.google.com/macros/s/AKfycbytYrHiEODj4Or2XtblQ1iwp8v1_-WLW8Htq9rxBdjVz9SuLQvdW1G9723wO-7Nn5MEJg/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.text())
+                .then(responseText => {
+                    const responseElement = document.getElementById('response');
+                    responseElement.textContent = responseText;
+                    // init. form
+                    document.querySelector('form').reset();
+
+                    // move scroll on message(response) 
+                    responseElement.scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(error => console.error('Error:', error));
+
+                // prevent empty(default) form
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h3>pdbops.com 컨설팅 서비스 신청폼</h3>
+
+        <form onsubmit="return submitForm();">
+            <p>*는 필수항목입니다.</p>
+            <!--이름-->
+            <div class="form-group">
+                <label for="name">1. 이름*</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <!--이메일-->
+            <div class="form-group">
+                <label for="email">2. 이메일*</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <!--성별-->
+            <div class="form-group radio-group">
+                <p>3. 성별*</p>
+                <label><input type="radio" name="gender" value="여성" required> 여성</label>
+                <label><input type="radio" name="gender" value="남성"> 남성</label>
+            </div>
+
+            <!--분야/업무-->
+            <div class="form-group">
+                <label for="fieldwork">4. 분야/업무*</label>
+                <input type="text" id="fieldwork" required>
+            </div>
+
+            <!--희망내용-->
+            <div class="form-group">
+                <label for="hopeservice">5. 희망 내용*</label>
+                <textarea id="hopeservice" rows="4" required></textarea>
+            </div>
+
+            <!--희망지역-->
+            <div class="form-group">
+                <label for="areaservice">6. 희망 지역*</label>
+                <input type="text" id="areaservice" required>
+            </div>
+
+            <!--희망날짜-->
+            <div class="form-group">
+                <label for="dateservice">7. 희망 날짜*</label>
+                <input type="date" id="dateservice" required>
+            </div>
+
+            <!--희망서비스-->
+            <div class="form-group checkbox-group">
+                <p>8. 희망 서비스(복수선택 가능)</p>
+                <label><input type="checkbox" name="selectservice" value="리스크애자일프로세스"> 교육/워크숍_리스크 애자일 프로세스 디자인</label>
+                <label><input type="checkbox" name="selectservice" value="지식네트워크"> 교육/워크숍_지식 네트워크 디자인</label>
+                <label><input type="checkbox" name="selectservice" value="전략컨설팅"> 전략_전략 컨설팅(애자일 코칭)</label>
+                <label><input type="checkbox" name="selectservice" value="국책과제"> 전략_정부(기술)지원사업 멘토링</label>
+                <label><input type="checkbox" name="selectservice" value="기술코칭"> 전략_기술 코칭</label>
+                <label><input type="checkbox" name="selectservice" value="사업화멘토링"> 전략_기술 사업화 멘토링</label>
+                <label><input type="checkbox" name="selectservice" value="정보보호"> 특화 교육/컨설팅_정보보호 관리체계 수립</label>
+                <label><input type="checkbox" name="selectservice" value="시스템디자인"> 특화 교육/컨설팅_서비스 시스템 디자인 코칭</label>
+                <label><input type="checkbox" name="selectservice" value="애자일프로세스"> 특화 교육/컨설팅_애자일 프로세스 코칭</label>
+                <label><input type="checkbox" name="selectservice" value="기타제안"> 기타 제안</label>
+            </div>
+
+            <!--제안의견-->
+            <div class="form-group">
+                <label for="moreservice">9. (위 8)의 제안 의견</label>
+                <textarea id="moreservice" rows="4"></textarea>
+            </div>
+
+            <!--참고사항-->
+            <div class="form-group checkbox-group">
+                <p>10. 참고 사항(다중선택 가능)</p>
+                <label><input type="checkbox" name="remark" value="예비창업"> 예비 창업</label>
+                <label><input type="checkbox" name="remark" value="초기스타트업"> 초기 스타트업(3년 이내)</label>
+                <label><input type="checkbox" name="remark" value="스타트업"> 스타트업(4년~7년)</label>
+                <label><input type="checkbox" name="remark" value="중소기업"> 중소기업</label>
+                <label><input type="checkbox" name="remark" value="중견기업"> 중견기업</label>
+                <label><input type="checkbox" name="remark" value="대기업"> 대기업</label>
+                <label><input type="checkbox" name="remark" value="공공기관"> 공공기관/연구원</label>
+                <label><input type="checkbox" name="remark" value="대학"> 대학</label>
+                <label><input type="checkbox" name="remark" value="학생"> 학생(대학원 포함)</label>
+                <label><input type="checkbox" name="remark" value="일반"> 일반(직장인 포함)</label>
+            </div>
+
+            <!--제출버튼-->
+            <div class="form-group">
+                <input type="submit" value="신청폼 제출">
+                <div id="response"></div>
+            </div>
+        </form>
+    </body>
+</html>
