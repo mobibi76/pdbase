@@ -10,6 +10,23 @@
 </video>
 <!--tooltip display-->
 <div id="tooltip"></div>
+<table>
+    <tr>
+        <th colspan="2">자료 다운로드</th>
+    </tr>
+    <tr>
+        <td id="year">2024년</td>
+        <td>
+            <ul>
+                <li>
+                  <a href="https://drive.google.com/file/d/1wBbPKijAd6oQN0uLlmkBSgzt0tP0R5RO/view?usp=sharing" target="_blank">
+                  교육(워크숍)프로그램 소개_1.0
+                  </a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
 <footer>
   <p id="formlink">
       <a href="#!Demo" onclick="introFetch('Demo')">🖱️데모(DEMO)🖱️</a>
