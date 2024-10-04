@@ -24,6 +24,20 @@
             <main id="container"></main>
             <canvas id="aniCanvas"></canvas>
         </article>
+        <!--popup 2024.10.04 added-->
+        <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+                <a href="https://blog.naver.com/totoriverce" target="_blank">
+                    <img src="./notice/popup.png" alt="popup_content">
+                </a>
+                <p>🛡️정보보안 관리체계 전문가 블로그🛡️</p>
+                <label>
+                    <input type="checkbox" id="donot-show-again">오늘 하루 동안 열지 않음
+                </label>
+                <button id="close-popup">확인</button>
+            </div>
+        <!--popup 2024.10.04 added-->
+        </div>
         <script>
             /*--fetch.js control--*/
             // function: define introFetch function
@@ -80,6 +94,21 @@
                         const containerHeight = flexHeight - navElement.offsetHeight;
                         document.querySelector('#container').style.height = `${containerHeight}px`;
                     }
+            /*--popup 2024.10.04 added--*/
+                    function openPopup() {
+                        const donotShowAgain = localStorage.getItem('donotShowPopup');
+                        if (!donotShowAgain) {
+                            document.getElementById('popup').style.display = 'flex';
+                        }
+                    }
+                    document.getElementById('close-popup').addEventListener('click', function() {
+                        const donotShowAgainCheckbox = document.getElementById('donot-show-again');
+                        if (donotShowAgainCheckbox.checked) {
+                            localStorage.setItem('donotShowPopup', 'true');
+                        }
+                        document.getElementById('popup').style.display = 'none';
+                    });
+            /*--popup 2024.10.04 added--*/
             document.addEventListener("DOMContentLoaded", function() {
                 // DOMContentLoaded control and adjust Heithts
                 Promise.all([
@@ -150,6 +179,9 @@
                         tooltip.style.display = 'none';
                     }); //till.here.on.240927.updated
                 });
+            /*--popup 2024.10.04 added--*/
+                openPopup();
+            /*--popup 2024.10.04 added--*/
             });
             /*--prevent contents from the mouse right click event--*/
             document.addEventListener('contextmenu', function(event) {
