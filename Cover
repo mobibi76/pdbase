@@ -32,14 +32,14 @@
                   <a href="https://drive.google.com/file/d/1-QVLXnlkad0V0W5T_Bdwo5dTBdAlyLCN/view?usp=sharing" target="_blank">
                   기술 IP 소개_1.0 (2024.10.04)
                   </a>
-                </li>
+                </li>                
             </ul>
         </td>
     </tr>
 </table>
 <footer>
   <p id="formlink">
-      <a href="#!Demo" onclick="introFetch('Demo')">🖱️데모(DEMO)🖱️</a>
+      <a href="#!Demo" class="inter-link">🖱️데모(DEMO)🖱️</a>
   </p>
   <p>processdesignbase@gmail.com (125-51-00257)</p>
 </footer>
