@@ -3,10 +3,13 @@
         <th colspan="2">블로그</th>
     </tr>
     <tr>
-        <td id="year">2024y</td>
+        <td id="year">24/10/09</td>
         <td>
             <ul>
-                <li>To Be Opened
+                <li>
+                    <a href="https://pdbops.blogspot.com" target="_blank">
+                        문제해결(소통){체계역학과정설계;} 시작하기
+                    </a>
                 </li>
             </ul>
         </td>
