@@ -224,11 +224,16 @@
         }
     }
 
-/*--G. start canvas animation--*/
+/*--G. canvas animation--*/
+    let animationFrameID = null;
+    let isAnimating = false;
+
+    // G1. start canvas animation
     function startCanvasAnimation() {
         const canvas = document.getElementById("aniCanvas");
 
-        if (canvas) {
+        if (canvas && !isAnimating) {
+            isAnimating = true;
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             const ctx = canvas.getContext('2d');
@@ -261,31 +266,15 @@
                 }
                 animationFrameID = requestAnimationFrame(drawObject);
             }
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !isAnimating) {
-                        isAnimating = true;
-                        drawObject();
-                        console.log("Canvas Animation Started");
-                    } else if (!entry.isIntersecting && isAnimating) {
-                        stopCanvasAnimation();
-                        console.log("Canvas Animation Stopped");
-                    }
-                });
-            });
-
-            observer.observe(canvas);
+            drawObject();
             window.addEventListener('resize', function() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             });
-        } else {
-            console.error("Canvas Load Failure");
         }
     }
 
-/*--H. stop canvas animation--*/
+    // G2. stop canvas animation
     function stopCanvasAnimation() {
         if (isAnimating) {
             cancelAnimationFrame(animationFrameID);
