@@ -3,27 +3,24 @@
     src: url('../font/Freesentation-4Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family:'freesentation3';
+    src: url('../font/Freesentation-3Light.ttf') format('truetype');
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 
-:root {
-    --background-color: whitesmoke;
-    --font-color: black;
-    --border-color: dimgrey;
-    --hyperlink-color: firebrick;
-    --page-color: white;
-}
-
 .popup-content {
     font-family: 'freesentation4';
-    font-size: 1rem;
-    background: var(--page-color);
+    font-size: 1.1rem;
+    background: white;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     max-width: 500px;
-    border: 0.1rem var(--hyperlink-color) solid;
+    border: 0.1rem firebrick dashed;
 }
 
 .popup-content img {
@@ -33,8 +30,8 @@
 .popup-overlay {
     display: none;
     position: fixed;
-    top: 8%;
-    left: 2%;
+    top: 8.5%;
+    left: 1.5%;
     width: auto;
     height: auto;
     justify-content: center;
@@ -43,19 +40,19 @@
 }
 
 .tooltip-image {
-    background-color: var(--page-color);
-    color: var(--font-color)
+    background-color: white;
+    color: firebrick
 }
 
 .tooltip-text {
-    background-color: var(--hyperlink-color);
-    color: var(--background-color);
+    background-color: firebrick;
+    color: white;
 }
 
 .videoFrame {
     position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
+    width: 75%;
+    padding-bottom: 42.09%;
     overflow: hidden;
 }
 
@@ -74,9 +71,8 @@
     flex-direction: column;
     overflow-y: auto;
     scrollbar-width: none;
-    background-color: var(--page-color);
-    max-width: 700px;
-    text-align: center;
+    max-width: 600px;
+    align-items: center;
 }
 
 #formlink {
@@ -84,10 +80,7 @@
 }
 
 #formlink a {
-    font-family:'freesentation4';
-    font-size: 1.6rem;
-    color: var(--hyperlink-color);
-    text-decoration: none;
+    font-size: 2rem;
 }
 
 #flex {
@@ -100,7 +93,7 @@
     list-style-type: none;
     font-family: 'freesentation4';
     font-size: 1.1rem;
-    color: var(--font-color);
+    color: black;
     text-align: left;
 }
 
@@ -109,16 +102,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--background-color);
-    border-bottom: 0.1rem var(--border-color) dashed;
     width: 100%;
 }
 
 #nav a {
-    font-family:'freesentation4';
-    font-size: 1.4rem;
-    color: var(--hyperlink-color);
-    text-decoration: none;
+    font-size: 1.3rem;
 }
 
 #nav li {
@@ -150,7 +138,7 @@
     font-family: 'freesentation4';
     padding: 8px;
     border-radius: 8px;
-    border: 0.1rem var(--border-color) dashed;
+    border: 0.1rem firebrick solid;
     font-size: 1rem;
     display: none;
     z-index: 1000;
@@ -162,19 +150,19 @@
 }
 
 a {
-    color: var(--hyperlink-color);
+    font-family: 'freesentation4';
+    color: firebrick;
     text-decoration: none;
 }
 
 footer {
     position: sticky;
+    width: 100%;
     bottom: 0px;
     font-family:'freesentation4';
     font-size: 1.1rem;
-    background-color: var(--background-color);
-    color: var(--font-color);
+    background-color: white;
     text-align: center;
-    border-top: 0.1rem var(--border-color) dashed;
     margin-top: auto;
 }
 
@@ -184,10 +172,11 @@ footer p {
 
 h2 {
     margin: 0px;
-    font-family:'freesentation4';
-    color: var(--font-color);
+    font-family:'freesentation3';
+    font-size: 2rem;
+    color: white;
     text-align: center;
-    background-color: var(--background-color);
+    background-color: firebrick;
 }
 
 html, body {
@@ -198,7 +187,7 @@ html, body {
 
 iframe {
     border: none;
-    border-bottom: 0.1rem var(--border-color) dashed;
+    border-bottom: 0.1rem firebrick solid;
     width: 100%;
     height: 70%;
 }
@@ -209,8 +198,7 @@ label {
 
 table {
     font-family: 'freesentation4';
-    font-size: 1.1rem;
-    color: var(--font-color);
+    font-size: 1.2rem;
     text-align: left;
     width: 100%;
     margin-top: 80px;
@@ -218,12 +206,9 @@ table {
 }
 
 table th {
-    font-size: 1.4rem;
+    font-family: 'freesentation3';
+    font-size: 1.3rem;
 }
-
-/*video {
-    margin-bottom: 0px;
-}*/
 
 @media (max-width: 500px) {
     #nav a {
@@ -239,7 +224,7 @@ table th {
     }
 
     #tooltip {
-        font-size: 0.7rem !important;
+        font-size: 0.9rem !important;
     }
 
     footer {
@@ -247,11 +232,11 @@ table th {
     }
 
     h2 {
-        font-size: 1.3rem !important;
+        font-size: 1.4rem !important;
     }
 
     table, #gameFrame li {
-        font-size: 0.7rem !important;
+        font-size: 1rem !important;
     }
 
     table th, #gameFrame {
