@@ -175,6 +175,10 @@
     let animationFrameID = null;
     const objAction = [];
 
+    function clearCanvasObjects() {
+        objAction.length = 0;
+    }
+
     // G1. start canvas animation
     function startCanvasAnimation() {
         const canvas = document.getElementById("aniCanvas");
@@ -190,6 +194,7 @@
             }
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
+            clearCanvasObjects();
 
             for (let i = 0; i < 30; i++) {
                 objAction.push({
@@ -224,6 +229,7 @@
     function stopCanvasAnimation() {
         if (isAnimating) {
             cancelAnimationFrame(animationFrameID);
+            clearCanvasObjects();
             isAnimating = false;
         }
     }
@@ -277,16 +283,25 @@
         });
     });
 
-/*--Sub1 : canvas animation cancel at page unload--*/
+/*--Sub : canvas animation--*/
+    // Sub1. cancel at page unload
     window.addEventListener("beforeunload", stopCanvasAnimation);
 
-/*--Sub2 : canvas animation cancel and play again on page activation--*/
+    // Sub2. cancel and play on page activation
     document.addEventListener("visibilitychange", function() {
         if (document.hidden) {
             stopCanvasAnimation();
         } else {
             startCanvasAnimation();
         }
+    });
+
+    // Sub3. candel at external link click
+    const externalLinks = document.querySelectorAll('a[target="_blank"]');
+    externalLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            stopCanvasAnimation();
+        });
     });
 
 /*--extra: play the video identified--*/
