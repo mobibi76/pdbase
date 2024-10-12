@@ -8,7 +8,6 @@
         container.removeEventListener('click', handleInterLinkClick);
         container.addEventListener('click', handleInterLinkClick);
     }
-
     // A2. handle interlink click event
     function handleInterLinkClick(event) {
         const link = event.target.closest('.inter-link');
@@ -41,7 +40,6 @@
             console.error('Fetch Operation Failure:', error);
         });
     }
-
     // B2. load pages through fetch.js with error handling
     function fetchPageContent(pageTitle, targetElementSelector) {
         return fetch(pageTitle).then(response => {
@@ -142,6 +140,8 @@
         const donotShowAgain = localStorage.getItem('donotShowPopup');
         if (donotShowAgain !== 'true') {
             document.getElementById('popup').style.display = 'flex';
+        } else {
+            document.getElementById('popup').style.display = 'none';
         }
     }
     document.getElementById('close-popup').addEventListener('click', function() {
@@ -184,7 +184,6 @@
     function clearCanvasObjects() {
         objAction.length = 0;
     }
-
     // G1. start canvas animation
     function startCanvasAnimation() {
         const canvas = document.getElementById("aniCanvas");
@@ -227,7 +226,6 @@
             animationFrameID = requestAnimationFrame(drawObject);
         }
     }
-
     // G2. stop canvas animation
     function stopCanvasAnimation() {
         if (isAnimating) {
