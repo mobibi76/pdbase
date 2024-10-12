@@ -1,13 +1,22 @@
 /*--A. click event to all inter-link class--*/
+    // A1. remove and rebind interlink
     function bindInterLinkEvent() {
-        const interLinks = document.querySelectorAll('.inter-link');
-        interLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const pageTitle = this.getAttribute('href').substring(2);
-                introFetch(pageTitle);
-            });
-        });
+        const nav = document.querySelector('#nav');
+        const container = document.querySelector('#container');
+        nav.removeEventListener('click', handleInterLinkClick);
+        nav.addEventListener('click', handleInterLinkClick);
+        container.removeEventListener('click', handleInterLinkClick);
+        container.addEventListener('click', handleInterLinkClick);
+    }
+
+    // A2. handle interlink click event
+    function handleInterLinkClick(event) {
+        const link = event.target.closest('.inter-link');
+        if (link) {
+            event.preventDefault();
+            const pageTitle = link.getAttribute('href').replace(/^#!/, '');
+            introFetch(pageTitle);
+        }
     }
 
 /*--B. fetch.js control--*/
@@ -24,7 +33,6 @@
                 containerElement.innerHTML = text;
                 containerElement.scrollTop = 0;
                 bindInterLinkEvent();
-
                 if (pageTitle.includes('Demo')) {
                     loadIframeWithTimeout('iframe', 'https://test.pdbops.com:8000/game-ko/', 5000);
                 }
@@ -45,10 +53,8 @@
             const targetElement = document.querySelector(targetElementSelector);
             if (targetElement) {
                 targetElement.innerHTML = text;
+                bindInterLinkEvent();
                 targetElement.scrollTop = 0;
-                if (targetElementSelector === '#container') {
-                    bindInterLinkEvent();
-                }
             }
         }).catch(error => {
             console.error('Fetch Operation Failure:', error);
@@ -80,8 +86,7 @@
         tooltip.id = 'tooltip';
         document.body.appendChild(tooltip);
         let currentTooltipTarget = null;
-
-        // Mouse event for desktop
+        // D1. mouse event for desktop
         document.addEventListener('click', function (e) {
             const target = e.target.closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
             if (target) {
@@ -103,8 +108,7 @@
                 currentTooltipTarget = null;
             }
         });
-
-        // Touch event for mobile
+        // D2. touch event for mobile
         document.addEventListener('touchstart', function (e) {
             const touch = e.touches[0];
             const target = document.elementFromPoint(touch.clientX, touch.clientY).closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
@@ -127,7 +131,6 @@
                 currentTooltipTarget = null;
             }
         });
-
         document.addEventListener('wheel', function () {
             tooltip.style.display = 'none';
             currentTooltipTarget = null;
@@ -141,7 +144,6 @@
             document.getElementById('popup').style.display = 'flex';
         }
     }
-
     document.getElementById('close-popup').addEventListener('click', function() {
         const donotShowAgainCheckbox = document.getElementById('donot-show-again');
         if (donotShowAgainCheckbox.checked) {
@@ -186,7 +188,6 @@
     // G1. start canvas animation
     function startCanvasAnimation() {
         const canvas = document.getElementById("aniCanvas");
-    
         if (canvas && !isAnimating) {
             isAnimating = true;
             const ctx = canvas.getContext('2d');
@@ -199,8 +200,7 @@
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
             clearCanvasObjects();
-
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 20; i++) {
                 objAction.push({
                     x: Math.random() * canvas.width / window.devicePixelRatio,
                     y: Math.random() * canvas.height / window.devicePixelRatio,
@@ -217,7 +217,6 @@
                     ctx.arc(action.x, action.y, action.radius, 0, Math.PI * 2, false);
                     ctx.fill();
                     action.y += action.velocity;
-    
                     if (action.y > canvas.height / window.devicePixelRatio) {
                         action.y = -action.radius;
                         action.x = Math.random() * canvas.width / window.devicePixelRatio;
@@ -258,7 +257,6 @@
 /*--I. iframe load timeout--*/
     function loadIframeWithTimeout(iframeSelector, src, timeout) {
         const iframe = document.querySelector(iframeSelector);
-
         if (!iframe) {
             console.error(`No iframe found with selector: ${iframeSelector}`);
             return;
@@ -278,7 +276,6 @@
 
 /*--Main : page load--*/
     document.addEventListener("DOMContentLoaded", function() {
-
         setCookie("__Secure-3PSIDTS", generateSecureRandomValue(), ".youtube.com", "/");
         setCookie("__Secure-3PSID", generateSecureRandomValue(), ".youtube.com", "/");
         setCookie("__Secure-3PAPISID", generateSecureRandomValue(), ".youtube.com", "/");
@@ -286,13 +283,14 @@
         setCookie("__Secure-3PSIDCC", generateSecureRandomValue(), ".youtube.com", "/");
         setCookie("__Host-3PLSID", generateSecureRandomValue(), "accounts.google.com", "/");
         setCookie("__Secure-OSID", generateSecureRandomValue(), ".docs.google.com", "/");
+        setCookie("__Secure-OSID", generateSecureRandomValue(), ".drive.google.com", "/");
+        setCookie("COMPASS", generateSecureRandomValue(), ".drive.google.com", "/");
         setCookie("NID", generateSecureRandomValue(), ".google.com", "/");
         setCookie("__Secure-3PSID", generateSecureRandomValue(), ".google.com", "/");
         setCookie("__Secure-3PAPISID", generateSecureRandomValue(), ".google.com", "/");
         setCookie("__Secure-3PSIDTS", generateSecureRandomValue(), ".google.com", "/");
         setCookie("__Secure-3PSIDCC", generateSecureRandomValue(), ".google.com", "/");
-    
-        console.log("Cookies have been set for respective domains.");
+        console.log("Cookies Set Respective Domains.");
 
         Promise.all([
             fetchPageContent('Menu', '#nav'),
@@ -311,7 +309,6 @@
 /*--Sub : canvas animation--*/
     // Sub1. cancel at page unload
     window.addEventListener("beforeunload", stopCanvasAnimation);
-
     // Sub2. cancel and play on page activation
     document.addEventListener("visibilitychange", function() {
         if (document.hidden) {
@@ -320,7 +317,6 @@
             startCanvasAnimation();
         }
     });
-
     // Sub3. candel at external link click
     const externalLinks = document.querySelectorAll('a[target="_blank"]');
     externalLinks.forEach(link => {
@@ -328,24 +324,3 @@
             stopCanvasAnimation();
         });
     });
-
-/*--extra: play the video identified--*/
-    /*function videoPlay() {
-        window.onload = function() {
-            const video = document.getElementById("pdbopsVideo");
-
-            if (video) {
-                video.loading = "lazy";
-                video.play().then(function() {
-                    console.log("Video Play Success");
-                }).catch(function(error) {
-                    console.log("Video Play Failure:", error);
-                }).finally(function() {
-                    startCanvasAnimation();                                
-                });
-            } else {
-                console.warn("Video Load Failure");
-                startCanvasAnimation();
-            }
-        };
-    }*/

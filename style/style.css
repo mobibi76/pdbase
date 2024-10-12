@@ -13,12 +13,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: gold;
+    background: firebrick;
     border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: firebrick;
+    background: gold;
 }
 
 .popup-content {
@@ -57,7 +57,7 @@
 .videoFrame {
     position: relative;
     width: 80%;
-    padding-bottom: 45%;
+    padding-bottom: 45.04%;
     overflow: hidden;
 }
 
