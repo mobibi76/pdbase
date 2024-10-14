@@ -199,7 +199,7 @@
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
             clearCanvasObjects();
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 30; i++) {
                 objAction.push({
                     x: Math.random() * canvas.width / window.devicePixelRatio,
                     y: Math.random() * canvas.height / window.devicePixelRatio,
@@ -256,18 +256,28 @@
     function loadIframeWithTimeout(iframeSelector, src, timeout) {
         const iframe = document.querySelector(iframeSelector);
         if (!iframe) {
-            console.error(`No iframe found with selector: ${iframeSelector}`);
+            console.error(`No Iframe Found With Selector: ${iframeSelector}`);
             return;
         }
         const timer = setTimeout(function() {
-            iframe.srcdoc = "<p>Server Response Failure. Try Later.<br>The server may be off.</p>";
+            iframe.srcdoc = `
+                <div style="text-align: center;">
+                    <p>Server Response Failure. Try Later.<br>The server may be off.</p>
+                    <img src="../notice/demoLoadFailure.png" alt="Demo Load Failure" style="width: 27%;">
+                </div>
+            `;
         }, timeout);
         iframe.onload = function() {
             clearTimeout(timer);
         };
         iframe.onerror = function() {
             clearTimeout(timer);
-            iframe.srcdoc = "<p>Server Response Failure. Try Later.<br>The server may be off.</p>";
+            iframe.srcdoc = `
+                <div style="text-align: center;">
+                    <p>Server Response Failure. Try Later.<br>The server may be off.</p>
+                    <img src="../notice/demoLoadFailure.png" alt="Demo Load Failure" style="width: 27%;">
+                </div>
+            `;
         };
         iframe.src = src;
     }
