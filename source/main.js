@@ -15,6 +15,7 @@
             event.preventDefault();
             const pageTitle = link.getAttribute('href').replace(/^#!/, '');
             introFetch(pageTitle);
+            loadRandomStylesheet();
         }
     }
 
@@ -199,7 +200,7 @@
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
             clearCanvasObjects();
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 20; i++) {
                 objAction.push({
                     x: Math.random() * canvas.width / window.devicePixelRatio,
                     y: Math.random() * canvas.height / window.devicePixelRatio,
@@ -280,6 +281,24 @@
             `;
         };
         iframe.src = src;
+    }
+
+/*--J. apply random css style--*/
+    function loadRandomStylesheet() {
+        const stylesheets = [
+            '../style/style_1.css', 
+            '../style/style_2.css', 
+            '../style/style_3.css'
+        ];
+        const randomIndex = Math.floor(Math.random() * stylesheets.length);
+        let existingLink = document.querySelector('link[rel="stylesheet"]');
+        if (existingLink) {
+            existingLink.remove();
+        }
+        const linkElement = document.createElement('link');
+        linkElement.rel = 'stylesheet';
+        linkElement.href = stylesheets[randomIndex];
+        document.head.appendChild(linkElement);
     }
 
 /*--Main : page load--*/
