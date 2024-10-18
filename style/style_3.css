@@ -80,6 +80,11 @@
     align-items: center;
 }
 
+#email a {
+    font-size: 1.1rem;
+    color: beige;
+}
+
 #formlink {
     margin: 0px;
 }
@@ -170,8 +175,8 @@ footer {
 }
 
 footer p {
-    margin: 3px;
     color: white;
+    margin: 3px;
 }
 
 h2 {
@@ -224,34 +229,34 @@ table th {
     }
 
     #nav a {
-        font-size: 1.1rem !important;
+        font-size: 1.1rem;
     }
 
     #nav li {
-        margin-right: 10px !important;
+        margin-right: 10px;
     }
 
     #formlink a {
-        font-size: 1.4rem !important;
+        font-size: 1.4rem;
     }
 
     #tooltip {
-        font-size: 0.9rem !important;
+        font-size: 1rem;
     }
 
     footer {
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 
     h2 {
-        font-size: 1.4rem !important;
+        font-size: 1.4rem;
     }
 
     table, #gameFrame li {
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 
     table th, #gameFrame {
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 }

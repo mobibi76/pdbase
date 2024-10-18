@@ -1,77 +1,115 @@
-<img data-tooltip="[하는 일: What We Do]
+<!--contents-->
+<img
+    data-tooltip="[하는 일: What We Do]
                 ✓Process design for problem-solving.
                 ✓Connecting knowledge and technology.
                 ✓Risk management and agile processes."
-    src="./img/articleHead.png" width="100%">
-<img data-tooltip="[Process Design Workshop Overview]
+    src="./img/articleHead.png"
+    width="100%"
+    alt="What We Do">
+<img
+    data-tooltip="[Process Design Workshop Overview]
                 ✓Day-by-day process design steps.
                 ✓Agile risk management and communication."
-    src="./img/programme.png" width="100%">
-<img data-tooltip="[소통: Interaction]
+    src="./img/programme.png"
+    width="100%"
+    alt="Workshop Overview">
+<img
+    data-tooltip="[소통: Interaction]
                 ✓Combining Process and Domain Knowledge.
                 ✓Building processes with agile communication.
                 ✓Risk exploration and storytelling in action."
-    src="./img/interaction.png" width="100%">
-<img data-tooltip="[기술: Analysis and Design]
+    src="./img/interaction.png"
+    width="100%"
+    alt="Interaction">
+<img
+    data-tooltip="[기술: Analysis and Design]
                 [등록IP: Patent KR101791086B1/WO2018212398A1]
                 ✓From Start to Goal: Process Flow.
                 ✓Mapping the path to success.
                 ✓Step-by-step process towards the goal."
-    src="./img/process.png" width="100%">
-<img data-tooltip="✓Designing solutions with process technology.
+    src="./img/process.png"
+    width="100%"
+    alt="Patent(IP)">
+<img
+    data-tooltip="✓Designing solutions with process technology.
                 ✓System Dynamics for agile and risk reduction.
                 ✓Process design and analysis games coming soon.
                 --Beta testing in 2025"
-    src="./img/value.png" width="100%">
-<img data-tooltip="[툴 데모: DEMO concept]" 
-    src="./img/toolConcept.png" width="100%">
-<img data-tooltip="[툴 워크플로: DEMO workflow]"
-    src="./img/techConcept.png" width="100%">
-<img data-tooltip="[About Consultant]
+    src="./img/value.png"
+    width="100%"
+    alt="Value Proposition">
+<img
+    data-tooltip="[툴 데모: DEMO concept]" 
+    src="./img/toolConcept.png"
+    width="100%"
+    alt="Tool Concept">
+<img
+    data-tooltip="[툴 워크플로: DEMO workflow]"
+    src="./img/techConcept.png"
+    width="100%"
+    alt="Workflow Concept">
+<img
+    data-tooltip="[About Consultant]
                 ✓Expert in government and corporate risk management.
                 ✓Certified Risk Management Expert.
                 ✓Process design patent holder."
-    src="./img/consultant.png" width="100%">
+    src="./img/consultant.png"
+    width="100%"
+    alt="About Consultant">
 
 <!--table-->
 <table>
-    <tr>
-        <th colspan="2">자료 다운로드</th>
-    </tr>
-    <tr>
-        <td id="year">2024년</td>
-        <td>
-            <ul>
-                <li>
-                  <a href="https://drive.google.com/file/d/1wBbPKijAd6oQN0uLlmkBSgzt0tP0R5RO/view?usp=sharing" target="_blank">
-                  교육(워크숍)프로그램 소개_1.0 (program intro.)
-                  </a>
-                </li>
-                <li>
-                  <a href="https://drive.google.com/file/d/17TTAPkbFGiQ5rH3SVgkVOYdBARC-PVbu/view?usp=sharing" target="_blank">
-                  표준비밀유지협약 [2024] (NDA)
-                  </a>
-                </li>
-                <li>
-                  <a href="https://drive.google.com/file/d/1-QVLXnlkad0V0W5T_Bdwo5dTBdAlyLCN/view?usp=sharing" target="_blank">
-                  기술 IP 소개_1.0 (2024.10.04)
-                  </a>
-                </li>
-            </ul>
-        </td>
-    </tr>
+    <caption>{download for programme}</caption>
+    <thead>
+        <tr>
+            <th colspan="2">자료 다운로드</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="year">2024년</td>
+            <td>
+                <ul>
+                    <li>
+                    <a href="https://drive.google.com/file/d/1wBbPKijAd6oQN0uLlmkBSgzt0tP0R5RO/view?usp=sharing" target="_blank">
+                    교육(워크숍)프로그램 소개_1.0 (program intro.)
+                    </a>
+                    </li>
+                    <li>
+                    <a href="https://drive.google.com/file/d/17TTAPkbFGiQ5rH3SVgkVOYdBARC-PVbu/view?usp=sharing" target="_blank">
+                    표준비밀유지협약 [2024] (NDA)
+                    </a>
+                    </li>
+                    <li>
+                    <a href="https://drive.google.com/file/d/1-QVLXnlkad0V0W5T_Bdwo5dTBdAlyLCN/view?usp=sharing" target="_blank">
+                    기술 IP 소개_1.0 (2024.10.04)
+                    </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
 </table>
-<img data-tooltip="[서비스 경험: Experiences]"
-    src="./img/history.png" width="100%">
-<img data-tooltip="[Consulting Service Scope]
+
+<!--contents-->
+<img
+    data-tooltip="[서비스 경험: Experiences]"
+    src="./img/history.png"
+    width="100%"
+    alt="Experience">
+<img
+    data-tooltip="[Consulting Service Scope]
                 ✓(Government Tech.)Project risk management from A to Z.
                 ✓Agile risk communication workshops."
-    src="./img/serviceApply.png" width="100%">
+    src="./img/serviceApply.png"
+    width="100%"
+    alt="Service Scope">
 
 <!--footer-->
 <footer>
     <p id="formlink">
         <a href="https://forms.gle/1NiC53k2jivfyrcr8" target="_blank">🖱️신청(APPLY)🖱️</a>
     </p>
-    <p>processdesignbase@gmail.com (125-51-00257)</p>
+    <p id="email"></p>
 </footer>

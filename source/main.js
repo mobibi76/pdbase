@@ -33,6 +33,17 @@
                 containerElement.innerHTML = text;
                 containerElement.scrollTop = 0;
                 bindInterLinkEvent();
+
+
+
+
+
+                insertEmailIfPresent();
+                
+                
+                
+                
+                
                 if (pageTitle.includes('Demo')) {
                     loadIframeWithTimeout('iframe', 'https://test.pdbops.com:8000/test/', 3500);
                 }
@@ -59,6 +70,27 @@
             console.error('Fetch Operation Failure:', error);
         });
     }
+
+
+
+
+
+    // B3. insert contact infomarion
+    function insertEmailIfPresent() {
+        const emailElement = document.querySelector('#email');
+        if (emailElement) {
+            emailElement.innerHTML = 
+                '<a href="mailto:processdesignbase@gmail.com">processdesignbase@gmail.com</a> (125-51-00257)';
+            console.log('Email Inserted.');
+        } else {
+            console.log('#email Element Not Found, Skip Insert');
+        }
+    }
+
+
+
+
+
 
 /*--C. calculate header-flex to fix scroll issue on container--*/
     function adjustContainerHeight() {
@@ -325,6 +357,16 @@
             openPopup();
             videoPlay();
             startCanvasAnimation();
+
+
+
+
+            insertEmailIfPresent();
+            
+            
+
+
+
         });
     });
 
