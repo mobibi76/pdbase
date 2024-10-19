@@ -71,19 +71,41 @@
             <canvas id="aniCanvas"></canvas>
         </article>
 
-        <!--popup-->
-        <div id="popup" class="popup-overlay">
+
+
+
+
+        <!--popup:main-->
+        <div id="popup-rep" class="popup-overlay">
             <div class="popup-content">
                 <a href="https://pdbops.blogspot.com/2024/10/pdbopscom.html" target="_blank">
                     <img src="./notice/popup.png" alt="popup_content">
                 </a>
                 <p>👉🏻 대표 블로그{The Blog} 👈🏻</p>
                 <label>
-                    <input class="custom-checkbox" type="checkbox" id="donot-show-again">오늘 하루 동안 열지 않음
+                    <input class="custom-checkbox" type="checkbox" id="donot-show-again-rep">오늘 하루 동안 열지 않음
                 </label>
-                <button class="custom-button" id="close-popup" data-popup="popup">확인</button>
+                <button class="custom-button" id="close-popup-rep" data-popup="popup-rep">확인</button>
             </div>
         </div>
+
+        <!--popup:sub1-->
+        <div id="popup-sub1" class="popup-overlay">
+            <div class="popup-content">
+                <a href="https://blog.naver.com/totoriverce" target="_blank">
+                    <img src="./notice/popup-s1.png" alt="popup_content">
+                </a>
+                <p>🛡️ 정보보호체계 전문가{Friend} 🛡️</p>
+                <label>
+                    <input class="custom-checkbox" type="checkbox" id="donot-show-again-sub1">오늘 하루 동안 열지 않음
+                </label>
+                <button class="custom-button" id="close-popup-sub1" data-popup="popup-sub1">확인</button>
+            </div>
+        </div>
+
+
+
+
 
         <!--main.js and mail.js-->
         <script src="./source/main.js" type="module" defer></script>
