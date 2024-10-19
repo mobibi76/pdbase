@@ -1,62 +1,65 @@
 /*--A. click event to all inter-link class--*/
     // A1. remove and rebind interlink
     function bindInterLinkEvent() {
-        const nav = document.querySelector('#nav');
-        const container = document.querySelector('#container');
-        nav.removeEventListener('click', handleInterLinkClick);
-        nav.addEventListener('click', handleInterLinkClick);
-        container.removeEventListener('click', handleInterLinkClick);
-        container.addEventListener('click', handleInterLinkClick);
+        console.log("Inter-links are binding.");
+        try {
+            const nav = document.querySelector('#nav');
+            const container = document.querySelector('#container');
+            nav.removeEventListener('click', handleInterLinkClick);
+            nav.addEventListener('click', handleInterLinkClick);
+            container.removeEventListener('click', handleInterLinkClick);
+            container.addEventListener('click', handleInterLinkClick);
+        } catch (error) {
+            console.error('Binding inter-links were ERROR.:', error);
+        }
     }
     // A2. handle interlink click event
     function handleInterLinkClick(event) {
-        const link = event.target.closest('.inter-link');
-        if (link) {
-            event.preventDefault();
-            const pageTitle = link.getAttribute('href').replace(/^#!/, '');
-            introFetch(pageTitle);
-            loadRandomStylesheet();
+        try {
+            console.log("Inter-link is clicked.");
+            const link = event.target.closest('.inter-link');
+            if (link) {
+                event.preventDefault();
+                const pageTitle = link.getAttribute('href').replace(/^#!/, '');
+                console.log(`Page is loading.: ${pageTitle}`);
+                introFetch(pageTitle);
+                loadRandomStylesheet();
+            }
+        } catch (error) {
+            console.error('Handling inter-link click was ERROR.:', error);
         }
     }
 
 /*--B. fetch.js control--*/
     // B1. define introFetch function
     function introFetch(pageTitle) {
+        console.log(`Page is fetching.: ${pageTitle}`);
         fetch(pageTitle).then(response => {
             if (!response.ok) {
-                throw new Error('Network Failure');
+                throw new Error(`Network was ERROR: ${response.statusText}`);
             }
             return response.text();
         }).then(text => {
+            console.log(`Content is fetched.: ${pageTitle}`);
             const containerElement = document.querySelector('#container');
             if (containerElement) {
                 containerElement.innerHTML = text;
                 containerElement.scrollTop = 0;
                 bindInterLinkEvent();
-
-
-
-
-
                 insertEmailIfPresent();
-                
-                
-                
-                
-                
                 if (pageTitle.includes('Demo')) {
-                    loadIframeWithTimeout('iframe', 'https://test.pdbops.com:8000/test/', 3500);
+                    loadIframeWithTimeout('iframe', 'https://test.pdbops.com:8000/test/', 3000);
                 }
             }
         }).catch(error => {
-            console.error('Fetch Operation Failure:', error);
+            console.error('Fetch operation was failure.:', error);
         });
     }
     // B2. load pages through fetch.js with error handling
     function fetchPageContent(pageTitle, targetElementSelector) {
         return fetch(pageTitle).then(response => {
             if (!response.ok) {
-                throw new Error('Network Failure');
+                throw new Error('Network was failure.');
             }
             return response.text();
         }).then(text => {
@@ -67,30 +70,20 @@
                 targetElement.scrollTop = 0;
             }
         }).catch(error => {
-            console.error('Fetch Operation Failure:', error);
+            console.error('Fetch operation was failure.:', error);
         });
     }
-
-
-
-
-
     // B3. insert contact infomarion
     function insertEmailIfPresent() {
         const emailElement = document.querySelector('#email');
         if (emailElement) {
             emailElement.innerHTML = 
                 '<a href="mailto:processdesignbase@gmail.com">processdesignbase@gmail.com</a> (125-51-00257)';
-            console.log('Email Inserted.');
+            console.log('Email is inserted.');
         } else {
-            console.log('#email Element Not Found, Skip Insert');
+            console.log('#email element was not found, thus skip inserting');
         }
     }
-
-
-
-
-
 
 /*--C. calculate header-flex to fix scroll issue on container--*/
     function adjustContainerHeight() {
@@ -117,59 +110,64 @@
         tooltip.id = 'tooltip';
         document.body.appendChild(tooltip);
         let currentTooltipTarget = null;
-        // D1. mouse event for desktop
-        document.addEventListener('click', function (e) {
-            const target = e.target.closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
-            if (target) {
-                if (currentTooltipTarget === target) {
+        console.log("Tooltip event handlers are initialising.");
+        try {
+            // D1. mouse event for desktop
+            document.addEventListener('click', function (e) {
+                const target = e.target.closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
+                if (target) {
+                    if (currentTooltipTarget === target) {
+                        tooltip.style.display = 'none';
+                        currentTooltipTarget = null;
+                    } else {
+                        const text = target.getAttribute('data-tooltip') || '';
+                        tooltip.textContent = text;
+                        tooltip.classList.remove('tooltip-text', 'tooltip-image');
+                        tooltip.classList.add(target.tagName.toLowerCase() === 'img' ? 'tooltip-image' : 'tooltip-text');
+                        tooltip.style.display = 'block';
+                        tooltip.style.left = `${e.pageX + 10}px`;
+                        tooltip.style.top = `${e.pageY + 10}px`;
+                        currentTooltipTarget = target;
+                    }
+                } else {
                     tooltip.style.display = 'none';
                     currentTooltipTarget = null;
-                } else {
-                    const text = target.getAttribute('data-tooltip') || '';
-                    tooltip.textContent = text;
-                    tooltip.classList.remove('tooltip-text', 'tooltip-image');
-                    tooltip.classList.add(target.tagName.toLowerCase() === 'img' ? 'tooltip-image' : 'tooltip-text');
-                    tooltip.style.display = 'block';
-                    tooltip.style.left = `${e.pageX + 10}px`;
-                    tooltip.style.top = `${e.pageY + 10}px`;
-                    currentTooltipTarget = target;
                 }
-            } else {
-                tooltip.style.display = 'none';
-                currentTooltipTarget = null;
-            }
-        });
-        // D2. touch event for mobile
-        document.addEventListener('touchstart', function (e) {
-            const touch = e.touches[0];
-            const target = document.elementFromPoint(touch.clientX, touch.clientY).closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
-            if (target) {
-                if (currentTooltipTarget === target) {
+            });
+            // D2. touch event for mobile
+            document.addEventListener('touchstart', function (e) {
+                const touch = e.touches[0];
+                const target = document.elementFromPoint(touch.clientX, touch.clientY).closest('td[data-tooltip], tr[data-tooltip], img[data-tooltip]');
+                if (target) {
+                    if (currentTooltipTarget === target) {
+                        tooltip.style.display = 'none';
+                        currentTooltipTarget = null;
+                    } else {
+                        const text = target.getAttribute('data-tooltip') || '';
+                        tooltip.textContent = text;
+                        tooltip.classList.remove('tooltip-text', 'tooltip-image');
+                        tooltip.classList.add(target.tagName.toLowerCase() === 'img' ? 'tooltip-image' : 'tooltip-text');
+                        tooltip.style.display = 'block';
+                        tooltip.style.left = `${touch.pageX + 10}px`;
+                        tooltip.style.top = `${touch.pageY + 10}px`;
+                        currentTooltipTarget = target;
+                    }
+                } else {
                     tooltip.style.display = 'none';
                     currentTooltipTarget = null;
-                } else {
-                    const text = target.getAttribute('data-tooltip') || '';
-                    tooltip.textContent = text;
-                    tooltip.classList.remove('tooltip-text', 'tooltip-image');
-                    tooltip.classList.add(target.tagName.toLowerCase() === 'img' ? 'tooltip-image' : 'tooltip-text');
-                    tooltip.style.display = 'block';
-                    tooltip.style.left = `${touch.pageX + 10}px`;
-                    tooltip.style.top = `${touch.pageY + 10}px`;
-                    currentTooltipTarget = target;
                 }
-            } else {
+            });
+            document.addEventListener('wheel', function () {
                 tooltip.style.display = 'none';
                 currentTooltipTarget = null;
-            }
-        });
-        document.addEventListener('wheel', function () {
-            tooltip.style.display = 'none';
-            currentTooltipTarget = null;
-        });
+            });
+        } catch (error) {
+            console.error("TooltipEventHandle was ERROR.:", error);
+        }
     }
 
 /*--E. popup--*/
-    function openPopup() {
+    /*function openPopup() {
         const donotShowAgain = localStorage.getItem('donotShowPopup');
         if (donotShowAgain !== 'true') {
             document.getElementById('popup').style.display = 'flex';
@@ -183,29 +181,97 @@
             localStorage.setItem('donotShowPopup', 'true');
         }
         document.getElementById('popup').style.display = 'none';
-    });
+    });*/
+
+
+
+
+
+    const closeButton = document.querySelector('#close-popup');
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            const popupId = this.getAttribute('data-popup');
+            const donotShowAgainCheckbox = document.querySelector(`#${popupId} input[type="checkbox"]`);
+            if (donotShowAgainCheckbox && donotShowAgainCheckbox.checked) {
+                localStorage.setItem(`donotShowPopup_${popupId}`, 'true');
+                console.log(`Popup status is saving to local storage: donotShowPopup_${popupId} = true`);
+            }
+            closePopup(popupId);
+        });
+    }
+
+    function handlePopupVisibility(popupId) {
+        try {
+            console.log(`Popup visibility is checking.: ${popupId}`);
+            const donotShowAgain = localStorage.getItem(`donotShowPopup_${popupId}`);
+            console.log(`Popup status is cheking from local storage.: ${donotShowAgain}`);
+            if (donotShowAgain === 'true') {
+                console.log(`Popup ${popupId} will not be shown.`);
+                closePopup(popupId);
+            } else {
+                openPopup(popupId);
+            }
+        } catch (error) {
+            console.error(`Handling popup visibility was ERROR.: ${error}`);
+        }
+    }
+
+    function openPopup(popupId) {
+        try {
+            console.log(`Popup is opening.: ${popupId}`);
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'flex';
+                console.log(`Popup ${popupId} is opened.`);
+            }
+        } catch {
+            console.error(`Opening popup was ERROR.: ${error}`);
+        }
+    }
+
+    function closePopup(popupId) {
+        try {
+            console.log(`Popup is closing.: ${popupId}`);
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'none';
+                console.log(`Popup ${popupId} is closed.`);
+            }
+        } catch (error) {
+            console.error(`Closing popup was ERROR.: ${error}`);
+        }
+    }
+
+
+
+
 
 /*--F. play the video identified--*/
     function videoPlay() {
-        const videoElement = document.getElementById("pdbopsVideo");
-        if (videoElement) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const tag = document.createElement('script');
-                        tag.src = "https://www.youtube.com/iframe_api";
-                        tag.setAttribute('nonce', 'abc123');
-                        const firstScriptTag = document.getElementsByTagName('script')[0];
-                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        console.log("Video play is initialising.");
+        try {
+            const videoElement = document.getElementById("pdbopsVideo");
+                if (videoElement) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const tag = document.createElement('script');
+                                tag.src = "https://www.youtube.com/iframe_api";
+                                tag.setAttribute('nonce', 'abc123');
+                                const firstScriptTag = document.getElementsByTagName('script')[0];
+                                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                        window.onYouTubeIframeAPIReady = function () {
-                            new YT.Player('pdbopsVideo');
-                        };
-                        observer.disconnect();
-                    }
-                });
-            });
-            observer.observe(videoElement);
+                                window.onYouTubeIframeAPIReady = function () {
+                                    new YT.Player('pdbopsVideo');
+                                };
+                                observer.disconnect();
+                            }
+                        });
+                    });
+                    observer.observe(videoElement);
+                }
+        } catch (error) {
+            console.error("VideoPlay was ERROR.:", error);
         }
     }
 
@@ -219,52 +285,62 @@
     }
     // G1. start canvas animation
     function startCanvasAnimation() {
-        const canvas = document.getElementById("aniCanvas");
-        if (canvas && !isAnimating) {
-            isAnimating = true;
-            const ctx = canvas.getContext('2d');
+        console.log("Canvas animation is started.");
+        try {
+            const canvas = document.getElementById("aniCanvas");
+            if (canvas && !isAnimating) {
+                isAnimating = true;
+                const ctx = canvas.getContext('2d');
 
-            function resizeCanvas() {
-                canvas.width = window.innerWidth * window.devicePixelRatio;
-                canvas.height = window.innerHeight * window.devicePixelRatio;
-                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            clearCanvasObjects();
-            for (let i = 0; i < 20; i++) {
-                objAction.push({
-                    x: Math.random() * canvas.width / window.devicePixelRatio,
-                    y: Math.random() * canvas.height / window.devicePixelRatio,
-                    radius: Math.random() * 5 + 2,
-                    velocity: Math.random() * 1 + 1
-                });
-            }
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth * window.devicePixelRatio;
+                    canvas.height = window.innerHeight * window.devicePixelRatio;
+                    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+                }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                clearCanvasObjects();
+                for (let i = 0; i < 20; i++) {
+                    objAction.push({
+                        x: Math.random() * canvas.width / window.devicePixelRatio,
+                        y: Math.random() * canvas.height / window.devicePixelRatio,
+                        radius: Math.random() * 5 + 2,
+                        velocity: Math.random() * 1 + 1
+                    });
+                }
 
-            function drawObject() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = 'rgba(175, 205, 235, 0.3)';
-                objAction.forEach(action => {
-                    ctx.beginPath();
-                    ctx.arc(action.x, action.y, action.radius, 0, Math.PI * 2, false);
-                    ctx.fill();
-                    action.y += action.velocity;
-                    if (action.y > canvas.height / window.devicePixelRatio) {
-                        action.y = -action.radius;
-                        action.x = Math.random() * canvas.width / window.devicePixelRatio;
-                    }
-                });
+                function drawObject() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = 'rgba(175, 205, 235, 0.3)';
+                    objAction.forEach(action => {
+                        ctx.beginPath();
+                        ctx.arc(action.x, action.y, action.radius, 0, Math.PI * 2, false);
+                        ctx.fill();
+                        action.y += action.velocity;
+                        if (action.y > canvas.height / window.devicePixelRatio) {
+                            action.y = -action.radius;
+                            action.x = Math.random() * canvas.width / window.devicePixelRatio;
+                        }
+                    });
+                    animationFrameID = requestAnimationFrame(drawObject);
+                }
                 animationFrameID = requestAnimationFrame(drawObject);
             }
-            animationFrameID = requestAnimationFrame(drawObject);
+        } catch (error) {
+            console.error("Canvas animation was ERROR.:", error);
         }
     }
     // G2. stop canvas animation
     function stopCanvasAnimation() {
-        if (isAnimating) {
-            cancelAnimationFrame(animationFrameID);
-            clearCanvasObjects();
-            isAnimating = false;
+        console.log("Canvas animation is terminated.");
+        try {
+            if (isAnimating) {
+                cancelAnimationFrame(animationFrameID);
+                clearCanvasObjects();
+                isAnimating = false;
+            }
+        } catch (error) {
+            console.error("Canvas animation was ERROR.:", error);
         }
     }
 
@@ -284,7 +360,7 @@
     function loadIframeWithTimeout(iframeSelector, src, timeout) {
         const iframe = document.querySelector(iframeSelector);
         if (!iframe) {
-            console.error(`No Iframe Found With Selector: ${iframeSelector}`);
+            console.error(`There is no iframe with selector: ${iframeSelector}`);
             return;
         }
         const timer = setTimeout(function() {
@@ -344,7 +420,7 @@
             setCookie('LOGIN_INFO', generateSecureRandomValue(), domain);
             setCookie('COMPASS', generateSecureRandomValue(), domain);
         });
-        console.log('Session cookies have been set for respective domains.');
+        console.log('Session cookies have been set for each domain respectively.');
 
         Promise.all([
             fetchPageContent('Menu', '#nav'),
@@ -354,19 +430,21 @@
             window.addEventListener('resize', adjustContainerHeight);
             bindInterLinkEvent();
             tooltipEventHandle();
-            openPopup();
+            //openPopup();
+
+
+
+
+
+            handlePopupVisibility('popup');
+
+
+
+
+
             videoPlay();
             startCanvasAnimation();
-
-
-
-
             insertEmailIfPresent();
-            
-            
-
-
-
         });
     });
 
